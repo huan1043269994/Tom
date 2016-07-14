@@ -1,0 +1,8 @@
+Shell:A command interpreter,acting as a layer between the user and the system.
+Script:A file that contains a sequence of commands to execute one after the other.
+Bash:The Bourne Again Shell,a Bourne compatible shell.
+
+First:
+  Commands+Arguments
+  The first word:Command
+  the remaining words:arguments
