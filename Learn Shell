@@ -6,3 +6,5 @@ First:
   Commands+Arguments
   The first word:Command
   the remaining words:arguments
+Second:
+  无论任何形式文件，只要写了shell脚本的内容就可以用命令执行额。
