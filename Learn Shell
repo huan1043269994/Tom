@@ -8,3 +8,8 @@ First:
   the remaining words:arguments
 Second:
   无论任何形式文件，只要写了shell脚本的内容就可以用命令执行额。
+Thrid:
+  帮助和输入参数
+if ko //测试语句 -f -x -n
+通配符：“？”   “ ×”，双引号可以防止通配符扩展，不是不能防止变量扩展。如 echo "$SHELL"为变量取值
+单引号可以防止任何变量扩展。”\"也可以防止扩展
