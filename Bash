@@ -5,3 +5,130 @@
   编译型语言+解释型语言
     编译型语言：Fortran,Ada,Pascal,C,C++,java
     解释型语言：脚本语言" 每次执行需要编译+比编译型语言的层级要高可以轻松实现处理文件和目录之类的对象：awk，Perl,Python,Ruby,Shell
+2.重定向：每个unix/linux命令会打开三个文件：stdin 0，stdout 1，stderr 2.
+3.命令语言和程序设计语言
+  1.解释执行用户的命令/定义各种变量和参数，并提供许多在高级语言中才具有的选择，分之，循环等控制结构。
+  2.调用大部分核心，但是不是内核的一部分，并行的协调各个程序的运行
+  3.注意root下执行shell的程序
+  4.交互式，批处理
+4.都是shell：sh，bash，ash，csh，ksh就是不同的解释器。
+  sh：unix默认的shell
+  ash：最小，24命令，不方便
+  csh：是linux比较大的内核，52命令，tcsh
+  ksh：42命令，商业性能
+  bash：linux标准shell，完全兼容sh。40命令。
+5.编译型语言：源代码->目标代码。运行时直接读取目标代码，效率非常高,处理字节，整数，浮点数或其他机器层级。
+  解释型语言：读写编译代码并转换目标代码，再由计算机运行，效率相对而言比较低（其实有时候可以忽略），运行在较高的层级所以对文件的操作很好。、
+6.局部/环境/shell变量。
+  局部：仅在本shell实例中有效，其他shell启动的程序不能访问局部变量
+  环境：所有的程序包括shell启动的程序都能访问环境变量
+  shell变量：有一部分是局部变量有一部分是环境变量，保证了shell的正常运行
+7.替换
+  转义
+  变量替换：+/-/=/?   ?:出现则停止运行，送标准错误输出，检测正常赋值
+  命令替换：先执行，然后保存，到恰当的地方执行
+8.运算符
+  算数运算符：+ - × / = == ！= %
+  关系运算符：eq，ne，gt，lt，ge，le
+  布尔运算符：-a，-o，！
+  字符串运算符：= ！= -z -n str
+  文件测试运算符：-r，-w，-x，-f，-d，-s，-e
+  调用c/expr外部程序/awk外部程序帮忙
+9.注释
+  只有单行注释
+  写一个函数，多行注释
+10.字符串
+  单双引号
+  拼接字符串
+  获取字符串长度：$#
+11.数组
+  array=(1 2 3 4 5)
+  array=(
+  1
+  2
+  3
+  4
+  )
+  array[1]=1
+  输出全部：${array[*]} ${array[@]}
+  输出数组长度:${#array[*]}
+12.echo命令
+  显示转义字符
+  显示变量
+  显示换行
+  显示不换行
+  显示结果重定向至文件
+  原样输出字符串
+  显示命令执行结果
+13.printf、
+  浮点数值进行格式化打印，可以引入小型的awk程序，内建于bash，ksh93，zsh
+14.if ;then fi
+  if ;then elif ;then else fi
+  if ;then else fi
+15.case 变量/常数 in
+  ) ...;;
+  ) ...;;
+  *) ... ;;
+16.for .. in .....
+done
+17.while .../:(无命令）
+do
+done
+18.until .. 知道不满足某个条件就跳出循环。与while相反
+do
+..
+done
+19.break，continue
+20.函数。可有/可无返回值。  函数返回值用$?命令接收。嵌套等，被用作大型注释
+21.函数参数：
+  $0 文件名
+  $1-9函数参数直接用
+  $num>=10 ==>  ${num} 否则作替换然后加上
+22.输入输出重定向
+  1.who > users
+  2.echo line 1 > myfile
+  cat myfile
+  3.echo line 2 >> myfile
+  cat myfile
+  4.wc -l users计算users文件中的行数
+  5.wc -l < users：仅仅知道从标准输入读取内容，无文件名
+  6.command > file
+    command < file
+    command >> file
+    n > file
+    n < file
+    n >& m
+    n <& m
+    << tag:将开始标记tag和技术标记tag之间的内容作为输入
+  7.Here document
+    命令行中的：
+      wc -l << EOF
+        This is a simple lookup program
+        for good (and bad) resturants
+        in Cape Town.
+      EOF
+    脚本中：
+      cat << EOF
+      This is a simple lookup program
+      for good (and bad) resturants
+      in Cape Town.
+    EOF
+    在脚本并输入到myfile.txt中
+    cat << eof > myfile.txt
+      ....
+      ....
+    eof
+  8./dev/null
+    起到禁止输出的效果
+      command > /dev/null
+      command > /dev/null 2>&1
+23.文件包含
+  1.sh
+    url="http://www.baidu.com"
+  main.sh
+    . ./1.sh
+    echo $url
+  ./main.sh
+  http://www.baidu.com
+  (被包含脚本不需要有执行权限）
+  
