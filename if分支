@@ -1,4 +1,4 @@
-办公自动化，办公自动化
+办公自动化，办公自动化,考虑实现功能，不需要考虑效率.
 查看文件使用容量是否超越百分之90
 test=$(df -h | grep /dev/sdb2 | awk '{print $5}' | cut -d "%" -f 1)
 if [ "$test" -ge 90 ];then
@@ -17,3 +17,50 @@ fi
    else
     /etc/rc.d/init.d/httpd start &>/dev/null
     在查看apache服务器是否运行以httpd作为识别符号的时候文件名不能含有httpd
+3.多分之选择结构之计算器
+  判断是否为文件
+  cd /root/test/
+  ls *.tar.gz > ls.log
+  ls *.tgz >> ls.log
+  for i in $( cat ls.log )
+    do
+      tar -zxf $i &>/dev/null
+    done
+  rm -rf ls.log
+  压缩包，解压缩全部值
+  for((i=1;i<=100;i=i+1))
+    do
+      ehco $i
+    done
+    
+    批量删除用户：#!/bin/bash
+
+    for i in $(cat /etc/passwd | grep /home | grep -v syslog | grep -v hw | cut -d ":" -f 1)
+           do
+            userdel -r $i
+           done
+    批量添加用户:
+      #!/bin/bash
+
+
+read -t 30 -p "Please input user name:" name
+read -t 30 -p "Please input the number of users:" num
+read -t 30 -p "Please input the password of users:" pass
+
+if [ -n "$name" -a -n "$num" -a -n "$pass" ]
+        then
+                y=$( echo "$num" | sed 's/[0-9]//g')
+                if [ -z "$y" ]
+                        then
+                                for((i=1;i<=$num;i=i+1))
+                                        do
+                                                /usr/sbin/useradd $name$i &>/dev/null
+                                                echo $pass | /usr/bin/passwd --stdin $name$i &>/de
+v/null
+                                        done
+                fi
+fi
+~                                                                                                 
+~       
+~                
+      
