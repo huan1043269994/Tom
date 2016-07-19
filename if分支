@@ -1,0 +1,19 @@
+办公自动化，办公自动化
+查看文件使用容量是否超越百分之90
+test=$(df -h | grep /dev/sdb2 | awk '{print $5}' | cut -d "%" -f 1)
+if [ "$test" -ge 90 ];then
+  echo "Warning!I call the police"
+fi
+
+
+1.判断apache服务是否启动
+  apache www服务
+  美工+程序+数据库+www服务apache+linux+服务器+域名+ip+带宽（几兆网+运维工程师）
+2.
+  test=$( ps aux | grep httpd | grep -v grep)
+  if [ -n "$test" ]
+   then
+    echo "$(date) httpd is ok!" >> /tmp/autostart-acc.log
+   else
+    /etc/rc.d/init.d/httpd start &>/dev/null
+    在查看apache服务器是否运行以httpd作为识别符号的时候文件名不能含有httpd
