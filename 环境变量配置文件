@@ -1,0 +1,84 @@
+变量类型：
+      用户自定义变量
+      环境变量
+      预定义变量
+      
+1.source 配置文件 或 .配置文件
+修改配置文件不会在修改后立即生效，所以用source来让配置文件重新加载，不需要注销再登陆
+source .bashrc 加载配置文件，让他直接生效
+. .bashrc
+2.环境变量：PATH HISTSIZE PS1 HOSTNAME
+  针对系统默认的配置文件
+3.有哪些:一启动会直接生效的环境变量
+      //对所有的用户都起作用
+      /etc/profile
+      /etc/profile.d/*.sh
+      /etc/bashrc
+      //放在家目录下的，只对一个用户起作用
+      ~/.bash_profile
+      ~/.bashrc
+      
+      
+      
+      
+环境变量配置文件的功能：
+
+
+      rwxrwxrwx
+      r:4 w:2  x:1 权限组合用这些数字的和来表示 rwxrwxrwx:777目录最高权限
+                                                rw-rw-rw:666文件最高权限
+      u g o a
+      u:属主
+      g:属组
+      o:其他
+      a:全部
+      chmod :修改权限。
+      chmod a-x test.txt 所有的取消x执行权限
+      chmod a+rwx test.txt
+      chmod -R go=r test 对目录递归设定：所属组和其他为读权限
+      
+      
+      特殊权限的设定使用：SUID:4 SGID:2 SBIT:1 把原来的三位扩展为四位  
+                                SUID755 = 4755
+                            u+s:增加SUID属性
+                            g+s：增加SGID属性
+                            o+t：增加SBIT属性，
+                          chmod u+s test.txt 给文件增加SUID属性：对于提供给普通用户的但是要root才能操作的，通过赋予权限来完成操作
+                          chmod g+s test.txt 给文件增加SGID属性：两用户能够同时操作文件，更改删除，添加sticky之后，不能删除其他用户权限
+                          chmod o+t test.txt 给文件增加SBIT属性：只允许root和自己才能删除，sticky：可以在一个公共目录下
+                          添加文件但是不能删除
+                          umask:控制文件和目录创建时的默认权限：
+                          知道为什么是四位了：0022 第一位特殊权限，后面属主，属组，其他
+                          如果想要有执行权限：必须自己手动添加，为了保证系统安全
+      
+      1.对用户登陆过程起作用
+      正常登陆，第一排：注销后，退出后登陆          不需要用户登陆----|
+      /etc/profile ->  ~/.bash_profile ->  ~/.bashrc ->  /etc/bashrc -> 命令提示符
+          |                                                    |
+          |  ->  /etc/profile.d/*.sh  <-------------------------|
+                      | - > /etc/profile/lang.sh  ->   /etc/sysconfig/i18n
+                      
+            登陆之后：        
+              /etc/profile:改历史命令条数
+              ~/.bash_profile:
+              ~/.bashrc:改别名 rm='rm -i' 什么的
+              /etc/bashrc:改登陆起始符号
+              只有在/etc/bashrc:才定义了起始符号：PS也就是:hw@hw-System-Product-Name:~$ 
+                                                    如果出错，有一个环境变量配置文件出错：未加载到 /etc/bashrc  
+                                                    :起始符号变为系统内核默认的：bash5.2#
+                                                    处理：去其他linux系统拷贝过来或者解压缩之后拷贝。
+            没有登陆，基本用不上：
+                      
+                
+      
+      2.umask
+      查看默认权限
+      
+      3.系统就读取这个文件的属性和权限信息于当前用户的UID和GID进行对比，来决定是所有者还是所属组还是其他人，然后根据比对结果和用户执行
+      的动作来判断是否满足权限要求
+      4.文件权限除了r，w，x还有s，t这两个特殊权限，与系统的账号和系统的运行相关
+        s这个标记可以出现在文件拥有者的权限位x（SUID）   上也可以出现中文件所属组的x权限位上（SGID）
+        需要提供给普通用户使用但是要有root权限才能正确执行的程序基本都拥有suid，比如passwd，mount
+      5.
+        1.文件的最高权限666：文件创建后的权限为rw-rw-rw-  -  umask：数字换算成字母之后相减的权限值：rw-rw-rw- - ----w--w- = rw-r--r--
+        2.目录的最高权限777:rwxrwxrwx - ----w--w- =  rwxr-xr-x
