@@ -1,0 +1,71 @@
+光盘，u盘，硬盘，
+
+挂载命令：分配盘符
+盘符：linux在挂载点
+硬盘，分区，自动挂载
+
+windows自动挂载
+linux不是自动挂载
+
+
+1.mount 查看已经挂载的所有设备
+2.mount -a 根据 /etc/fstab 文件中的写入文件自动挂载
+3.如果在 /etc/fstab按照固定的格式写入了光盘挂载点，那么启动会自动去光驱里面找有没有光盘，没有光盘就会死机
+    只要忘掉了没有放入u盘和光盘，就会死机
+    
+    
+4.mount [-t 文件系统] [-o 特殊选项] 设备文件名 挂载点
+/dev/sad1
+-t:假如文件系统来指定挂载的类型:ext3 ext4 光盘：iso9660
+-o:特殊选项，可以指定挂载的额外选项
+
+mount -o remount,noexec /home/
+记得改回来啊
+
+建立挂载点：
+mkdir /mnt/cdrom  ( mount -t  /dev/sr0 /mnt/cdrom/)
+挂载光盘：
+mount -t iso9660    /dev/cdrom   /mnt/cdrom
+可以不写： mount /dev/cdrom /mnt/cdrom 挂载之后可以使用光盘了，
+
+
+挂载完光盘之后:如果要退出，一定要卸载光盘
+
+unmount 设备名或挂载点
+unmount /mnt/cdrom
+
+/mnt/cdrom/ :文件名
+/mnt/sr0 ：设备名
+
+u盘挂载:fdisk分区命令
+查看u盘设备文件名
+  fdisk -l
+  开始挂载：
+    mount -t vfat /dev/sdb1 /mnt/usb/
+    vfat:fat32
+  移动硬盘是ntfs文件系统，linux是不支持ntfs文件系统
+  linux:所有的驱动都有，只是在内核中没有加载
+  windows内核和linux内核到底是不一样的
+  
+  
+  
+  
+  
+  用户登陆查看命令：
+    "w"  //现在时间 开启 运行时间 用户个数 系统在 1 ，5 ，15分钟的负载
+     12:24:32 up  3:15,  1 user,  load average: 0.23, 0.15, 0.16
+     //登陆用户名 登陆终端 从那个ip地址登陆 登陆时间 用户闲置时间 和该终端链接的所有进程占用的时间。
+     不包括以前的，就是当前正在运行的后台作业占用的时间 当前进程占用的时间 当前正在运行的命令
+     USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+     hw       tty7     :0               09:10    3:14m  2:54   0.13s /sbin/upstart -
+     
+     tty1:本机终端,不会有ip
+     pts/0:第一个远程终端
+
+    "who" :登陆的用户名 登陆的终端 登陆的时间
+    hw       tty7         2016-07-21 09:10 (:0)
+
+    "last":判断系统中所有的用户登陆信息               登陆时间，退出时间
+    是读取 /var/log/wtmp 文件数据
+    reboot   system boot  4.4.0-21-generic Fri Jul  1 14:51 - 20:31  (05:39)
+    "lastlog":查看所有用户的最后一次登陆时间  ss
