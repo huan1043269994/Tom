@@ -1,0 +1,45 @@
+压缩：.zip .gz .bz2 .tar.gz .tar.bz2
+  zip hha.zip hha
+  zip -r japan.zip japan 目录
+  unzip japan.zip
+  创建文件是touch，目录是mkdir
+  
+  zip多余命令压缩多个文件，压缩到固定目录
+    zip /home/hw/代码/php/japan/1.zip  test.log test.txt
+    但是不能解压缩到固定目录
+  gzip也是
+    gzip test.log test.txt
+    bzip2 test.log test.txt
+  
+  .gz
+  gzip 原文件 压缩，原文件消失   gzip 1
+  gzip -c 原文件 > 压缩文件 gzip -c 1 > 1.gz
+  gzip -r 目录 压缩目录里面的全部文件，不压缩目录  gzip -r japan
+  解压缩：gzip -d 1.zip
+          gunzip 1.zip
+          
+  bzip2 原文件   不保留原文件
+  bzip2 -k 原文件   保留原文件
+  不能压缩目录
+  
+  
+  .tar.gz  .tar.baz2
+  
+  先打包为tar，再压缩为 .gz .bz2
+  tar -cvf japan.tar japan
+  解打包：tar -xvf japan.tar
+  直接压缩为:.tar.gz  tar -zcvf japan.tar.gz japan
+      解压缩: tar -zxvf japan.tar.gz
+      bz2格式：
+            tar -jcvf japan.tar.bz2 japan
+        固定解压缩路径： tar -jxvf japan.tar.bz2 -C japan/ (相对路径，绝对路径）
+  压缩多个文件：加空格  加绝对路径（压缩到固定的路径）
+        tar -zcvf japan.tar.gz student.sh student.txt
+        tar -zcvf /home/hw/代码/php/japan/jj.tar.gz student.sh student.txt
+  gzip japan.tar
+  gzip -c japan.tar > japan.tar.gz
+  gunzip japan.tar.gz
+  
+  bzip2 japan.tar
+  bzip2 -k japan.tar
+  bzip2 -d japan.tar.baz2
