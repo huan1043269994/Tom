@@ -1,0 +1,54 @@
+用户组:在删除用户组之前应该删除所有的用户，要不然其中用户成了黑户口，以后的权限会受到影响
+  建立用户组：groupadd sexy
+  修改组名：groupmod -n market(新） sexy（女生）
+  修改组编号：groupmod -g 668 market
+  创建用户组的同时修改组编号： groupadd -g 888 boss
+  删除组：groupdel market
+  
+  创建用户组之后创建用户：
+                        默认在home下创建一个和用户名一样的文件夹：useradd -g sexy sdf 
+                        指定创建用户时的文件夹，没有指定用户组会创建一个和用户名相同的用户组
+                                                                ：useradd -d /home/xxx imooc
+                        使用useradd -g sexy sdf,删除用户组之前要删除用户
+                        使用useradd -d /home/xxx imooc,删除用户之后直接也删除了用户组 
+  添加注释：usermod -c dgdzmx sdf
+  添加cls，使用sdf的用户:usermod -l cls sdf  修改所属文件夹： usermod -d /home/cls cls
+  修改用户的用户组,把imooc切换到sexy： usermod -g sexy imooc
+  删除用户：userdel jzmb
+            userdel -r jzmb：连同保存资料的文件夹一块删除/
+  一台服务器除了root用户之后其他都不能使用：touch /etc/nologin
+  
+  
+  锁定账户：不能删除和修改上传文件
+      上锁：passwd -l cls
+      解锁：passwd -u cls
+      不需要用户登陆直接可以看：passwd -d cls
+  主要组和附属组:
+    一个用户同时属于多个组
+      一个主要组：
+      多个附属组：
+      
+      cls属于sexy组，用gpasswd -a cls boss 添加到boss，属于其附属组，不修改原组
+      一次性添加多个附属组：gpasswd -a cls boss1,boss2,boss3
+      cls:添加文件默认属于主要组
+      切换到附属组 newgro boss
+      删除cls在附属组的账户：gpasswd -d cls boss
+    在创建用户同时创建主要组和多个附属组  useradd -g group1 -G group2,group3
+    修改设定用户组密码：gpasswd imooc 设置imooc组组密码
+    
+  把当前用户切换到其他用户
+      su username:
+      suod su:切换到root
+      root切换到普通直接切换：
+    
+    whoami:显示当前登陆用户名
+    id mooc:
+        1.显示指定用户信息，包括用户编号，用户名
+        2.主要组名称和编号，附属组列表
+    groups imooc
+        显示imooc用户所在的所有组
+    
+    chfn imooc:
+        设置用户资料，一次输入用户资料
+    finger imooc
+        显示用户详细资料
