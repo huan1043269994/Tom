@@ -1,0 +1,175 @@
+1.
+  源码包:
+    脚本安装包:其实也是类似于二进制包，源码包。
+        
+  二进制包：(RPM包，系统默认包)
+    包管理系统简单，只通过几个命令就可以实现包的安装升级，查询和卸载
+    安装速度比源码包安装快得多
+    缺点：经过编译，不可以看到源码包
+        功能选择不如源码包灵活
+        依赖性:基本每个包都需要依赖
+2.windows上的应用都是经过编译
+  反编译可能造成
+3.linux上软件
+  1.开源，有足够的能力，可以修改源代码
+  2.可以自由选择所需功能
+  3.软件是编译安装的，所以更加适合自己的系统，更加稳定也效率更高
+  4.卸载方便
+4.源码包确定：
+  1.安装步骤多，大型软件集合：（LAMP环境搭建），容易出现拼写错误
+    L:linux
+    A:Apache
+    M:mysql
+    P:PHP
+  2.编译过程时间较长，比二进制安装时间长。
+  3.一旦报错新手很难纠错
+5.rpm包：系统安装的光盘之中
+    httpd-2.2.15-15.el6.centos.1.i686.rpm
+    -httpd:软件包名
+    -2.2.15：软件版本
+    -15:软件发布的次数
+    -el6.centos:软件适用的linux平台
+    -i686:适合的硬件平台
+    -rpm：包扩展名
+  依赖性：
+    树形依赖：a->b->c
+    环形依赖：a->b->c->a
+    模块依赖：模块依赖，查询网站:www.rpmfind.net
+    库文件依赖：.so.2 依赖www.rmpfind.net解决
+    rmp -ivh 
+6.rmp安装 rmp会安装的到处都是，所以需要卸载命令
+  1.包全名：没有安装过的，使用包全名
+  2.包名：搜索已经安装过的软件包时，使用包名，是搜索 /var/lib/rpm/中的数据库
+  3. rpm
+    -i:安装
+    -v:显示详细信息
+    -h:显示进度
+    --nodeps:不检测依赖性
+    解决依赖性，直到解决依赖性.
+  4.yum就是rpm的在线安装，只有rpm包
+  5.升级和卸载
+    rpm -Uvh 包全名
+      -U：升级,因为新的包也是一个完全的新的包，可以替代安装选项
+    rpm -e 包名：
+      卸载也有依赖
+      --nodeps 不显示依赖关系
+  7.rpm+
+    -q: +包名  查询包是否安装
+    -qa:查询所有的已经安装的rpm包
+    -i:查询包信息
+    查询：查看未安装包，但是已经写入的
+    -p:查看未安装包
+    -l:查询安装列表，有很多东西确定要装哪一个,没装或装了
+    -f:查询文件属于那个软件包，系统文件名
+    -R:查看软件包依赖关系,查询没什么意义。直接装软件包报依赖关系，还可以查询未安装包的软件信息
+    
+    RPM:校验，如果文件没有被修改，不会有任何提示
+      -v + 已经安装好的包名：检验指定rpm包中的文件（verify）
+      验证内容：
+        S:文件大小是否改变
+        M：文件的类型或文件的权限（rwx）是否被改变
+        5：文件的MD5校验和是否改变（文件内容是否改变）
+        D：设备的主从代码是否改变
+        L：文件路径是否改变
+        U：文件的属主（所有者）是否改变
+        G：文件的属组是否改变
+        T：文件的修改时间是否改变
+            文件类型：
+              -c:配置文件
+              -d:普通文档
+              -g：鬼文件，不应该被RPM包包含
+              -L：授权文件
+              -r：描述文件
+      rpm2cpio 包全名 | cpio -idv .文件绝对路径   //提取包中文件到”当前目录下”
+          -rpm2cpio：将rpm包转换未cpio格式的命令
+          -cpio:是一个标准工具，它用于创建软件档案文件和从档案文件中提取文件
+          
+          cpio 选项 < [文件|设备]
+            -i:copy-in模式，还原
+            -d:还原时自动新建目录
+            -v:显示还原过程
+          rpm -qf /bin/ls
+          #查询ls命令属于那个软件包
+          mv /bin/ls/tmp/
+          #造成ls命令误删除假象
+          rpm2cpio /mnt/cdrom/Packages/coreutils-8.4-19.el6.i686.rpm | cpio -idv ./bin/ls
+          #提取RPM包中ls命令到当前目录下的/bin/ls
+          cp /root/bin/ls /bin/
+          #把ls命令复制会/bin/目录,修复文件丢失
+  8.yum：在官方网站提供服务器把所有的包都放上去，自动解决依赖性，全部下好
+    yum:是
+    1.yum源文件
+      vi /etc/yum.repos.d/CentOS-Base.repo
+        [base] 容器名称，放[]中
+        name   容器说明
+  辅助站点    mirrorlist 镜像站点
+  主站点      baseurl   yum源服务器地址，默认是CentOS官方的yum源服务器，是可以使用的可以修改成自己喜欢的
+        enabled   不写或写成enable=1都是生效的，enable=0不生效
+        gpgcheck  如果为1指rpm的数字证书生效，如果是0则不生效
+        gpgkey    数字证书的公钥文件保存位置，不用修改
+    2.光盘搭建yum源
+      没网络，搭建本地yum源
+        1.挂在光盘  
+          1.1  mkdir /mnt/cdrom
+          1.2  mount /dev/cdrom /mnt/cdrom
+        2.使网络源失效
+          1.1 cd /etc/yum.repos.d/
+          #进入yum源目录
+          1.2 mv CentOS-Base.repo CentOS-Base.repo.bak 因为它默认是检测这个文件名，单去文件里面把enable=0太麻烦。
+          1.3 设置光盘yum源，修改查找位置为光盘挂载点。注释多余的目录，设置enable=1
+        3.yum命令
+          
+    3.yum命令
+        yum list:查询所有安装的软件包
+          yum search 关键字：搜索服务器和关键字相关上所有可用的yum源
+          yum -y install 包名
+            包全名只在手工安装rpm有效：-y全自动执行
+            yum -y install gcc
+        yum -y update httpd:对于服务器来说，升级意味着损失，考虑稳定和安全
+        不要打 yum -y update:会升级所有的东西
+          yum -y remove 包名
+            -remove 卸载
+            -服务器最小化安装，用什么软件安装什么，尽量不卸载
+        yum：软件组安装命令
+           yum grouplist
+           #列出所有可用的软件组列表
+           yum groupinstall 软件组名
+           #安装指定软件组，组名可以由grouplist查询出来
+           yum groupremove
+           #卸载指定的软件组
+    4.源码包和rpm包的区别
+        1.安装位置不同： rpm --help | grep prefix  指定安装位置,但是一般不指定，删除有 rpm -e 包名
+              启动apache位置，绝对路径 /etc/rc.d/init.d/httpd start  service httpd start (rpm包）
+              安装在(指定位置)： /usr/local/软件名/      如果不指定会安得特别乱
+              
+              源码包：/usr/local/apache2/bin/apachectl start
+              只要把目录文件删除就不会留下任何缓存,不能使用service httpd start,因为没有安装到默认目录
+              如果吧源码包文件安装在默认位置：可以用service httpd start
+        2.源码包安装
+          1.安装c语言编译器 因为所有的源码包都是用c写的
+          2.apache建议用源码包
+          3.源码包保存位置： /usr/local/src/
+                软件安装位置： /usr/local
+                确定安装出错：安装过程停止，  出现error，warning，no提示
+              3.2:解压
+              3.3：下载源码包，解压，进入解压目录
+              3.4 ./configure 软件配置与检查:
+                    定义需求的功能选项
+                    检测系统环境是否符合安装要求
+                    把定义好的功能选项和检测系统环境的信息都写入Makefile文件，用于后续编辑
+                    ./configure --prefix=/usr/local/apache2
+              3.5 make 编译
+                make clean:清除缓存啊文件啊，让成为没安装之前
+              3.6 启动:两个apache，使用一个必须停掉另一个，建议使用源码包的apache，源码包效率高
+                service httpd start
+                /usr/local/apache2/bin/apachectl start
+              3.6 make install:编译安装
+        2.概念区别
+        3.带来的后果是启动/管理的方便
+        
+  脚本安装包的安装：
+    Nginx:轻量级web服务
+      安装：
+        关闭RP包安装的httpd和MySQL
+        保证yum源正常使用
+        关闭SELinux和防火墙
