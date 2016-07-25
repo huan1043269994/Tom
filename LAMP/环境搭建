@@ -21,3 +21,28 @@ LTS版本：可以用四年哦
  
  apt-get 安装软件
  
+ 
+ 2.Apache，配置文件加载流程
+   apache.conf
+   通过include把其他文件包含进来： conf.d/*
+                                   httpd.conf
+                                   ports.conf
+                                   mods-enabled/*             enabled：已经启用了
+                                   #各个模块的配置文件        availabled:可以使用的
+                                   sites-enabled/*            把需要启用的模块通过ln -s命令建立软
+                                    #虚拟主机的配置文件                           链接，apache在加载配置文件的过程中
+                                                               会把enabled中的所有软链接一次性加载
+                                                               一不小心破坏了软链接。再建立就可以了，
+                                                               不会实际上破坏原来的。
+ 3.MySql与PHP配置文件
+  mysql 核心配置文件： my.cnf
+  php: php.ini
+  
+  
+1.sudo mkdir -p /wwwroot/{video.bbs.oa}
+2.LAMP集群
+ Nginx服务器：负载均衡
+ Apache #php：分发请求
+ 写入：Mysql #1 服务器
+ 同步到Mysql服务器
+ php需要读取数据从服务器
