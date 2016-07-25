@@ -1,0 +1,23 @@
+1.Linux
+2.Apache
+3.Mysql
+4.php
+
+继承了Linux内核Debian系统诞生
+LTS版本：可以用四年哦
+
+1.Lamp：一种Web服务器解决方案之一：独立系统+软件组合组成
+ LNmp：nginx
+ 
+ 
+ lamp：  浏览器请求，dns解析域名成ip，由apache中的libphp5.so模块相应php，php/php中的mysql.so调用mysql
+ 通过远程工具管理linux服务器
+ 
+ 为了安全，设置一个普通用户
+ root无法登录，不允许远程用root登录
+ 
+ su（Switch User）切换到超级管理员
+ sudo（Switch User and DO）以超级管理员的身份运行
+ 
+ apt-get 安装软件
+ 
