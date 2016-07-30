@@ -81,7 +81,7 @@ sed
     -n:以数值型进行排序，默认字符串
     -r:反向
     -t:指定分隔符
-    -k n[,m]: n字段开始，m字段开始,一行中第几个到第几个
+    -k n[,m]: n字段开始，m字段结束,一行中第几个到第几个
     
     sort /etc/passwd
     sort -r /etc/passwd
