@@ -17,7 +17,7 @@
         vi /etc/shells看支持那些shell
         bash/csh/tcsh/dash进入子shel，shell树
         exit退出
-        em -rf 1.sh移除shell
+        rm -rf 1.sh移除shell
         ls当前目录下的文件
 11.echo
   -e实现反斜杠:输出非常规整和漂亮的格式
