@@ -1,0 +1,50 @@
+  tr 选项 要替换部分
+    -c:对二进制取反
+    -C:对locale定义的字符取反
+    -d:删除选项部分
+    -s:浓缩重复的字符串
+    
+  set
+    -x:开始追踪
+    +x:取消追踪
+    
+  join:
+    链接字段
+    
+  grep:
+    -F:使用固定的字符串进行匹配。
+    -e:匹配多个模式
+    -i:忽略大小写
+  getconf RE_DUP_MAX:
+  
+  
+  #合并两个文件
+  1 #!/bin/bash                                                                 
+  2 
+  3 sed '/^#/d' quotas | sort > quotas.sorted
+  4 sed '/^#/d' sales | sort > sales.sorted
+  5 
+  6 join quotas.sorted sales.sorted
+  7 
+  8 rm quotas.sorted sales.sorted
+  #主文件
+  
+    1 #配额                                                                       
+  2 #业务员 配额
+  3 joe     50
+  4 jane    75
+  5 herman  80
+  6 chris   95
+  #副文件一
+  
+    1 #业务员数量                                                                 
+  2 #业务员量
+  3 
+  4 joe     100
+  5 jane    200
+  6 herman  150
+  7 chris   300
+~ #副文件二
+  
+~                                                                               
+~                                       
