@@ -20,7 +20,7 @@ $(( $aa+$bb ))
 $[ $aa+$bb ]
 
 3.测试方法
-  ${a:-b}  ${a-b}在a为空时，两者的结果相反
-  ${a:=b} ${a=b}
-  ${var:?message}
-  ${var:+word} ${a+b}
+  c=${a:-b}  ${a-b}在a为空时，两者的结果相反
+  c=${a:=b} ${a=b}
+  c=${var:?message}
+  c=${var:+word} ${a+b}
