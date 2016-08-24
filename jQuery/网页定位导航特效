@@ -15,10 +15,65 @@
       3.1. scroll( [ data ], fn ):当用户滚动指定元素时，会发生scroll事件
       3.2. scroll事件适用于可滚动的元素和window对象
         当页面滚动时: $(window).scroll( function () { } );
-        scroll( [val] ):获取/设置匹配元素相对滚动条顶部的偏移
+        scrollTop( [val] ):获取/设置匹配元素相对滚动条顶部的偏移
         offset():获取匹配元素的相对偏移，返回的对象包含两个整形属性：top/left以像素记
         
-  
+        获取文档内容相当于浏览器顶部的偏移：$(document).scrollTop();
+        指定元素距离顶部和左部的偏移：$("#menu").offset().top / .left;
+        
+      3.3:
+        对文字：height:50px  line-height:50px 可以实现文字的垂直居中,text-align:实现水平居中
+                有宽度的block元素，用margin: 0 auto;可以实现水平居中
+                //实际上，因为一开始使用了{margin: 0; padding: 0;}所以重复了，如果思维清晰不重复的话: {margin-left: auto; margin-right: auto}
+        font-size:
+        line-height:
+        list-style:
+        width:
+        margin:
+        padding:
+        color:
+        border:
+        font-weight:
+        display:
+        height:
+        position:
+        top:
+        left:
+        text-decoration:
+        text-align:
+        background:
+        bottom:
+      
+      3.4:
+        通过id找，然后一级一级往下找，效率高，速度快。
+        a:hover,a.current{};
+        
+        实现左边和右边交互的是：jQuery部分
+          $(document).ready(function () {
+            $(window).scroll(function () {
+              var top = $(document).scrollTop();
+              var items = $("#content").find(".item");
+              var menu = $("#menu");
+              
+              var currentId = "";
+              
+              items.each(function () {
+                var m = $(this);
+                
+                if(m.offset().top - 300 < top){
+                  currentId = "#" + m.attr("id");
+                } else {
+                  return false;
+                }
+              });
+              
+              var currentLink = menu.find(".current");
+              if(currentId && currentId != currentLink.attr("href")){
+                currentLink.removeClass("current");
+                menu.find("[href=" + currentId + "]").addClass("current");
+              }
+            });
+          });
 3.网页定位导航设计
 4.jQuery实现网页定位导航
 5.浏览器调试
