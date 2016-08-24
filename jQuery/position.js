@@ -1,5 +1,5 @@
     <script type="text/javascript">
-        /*因为ie对document.getElementsByClassName();支持比较差
+        /*因为ie对document.getElementsByClassName();支持比较差*/
         function getByClassName( obj, cls){
             var elements = obj.getElementsByTagName("*");
             var result = [];
