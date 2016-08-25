@@ -5,7 +5,7 @@ var eventUtil = {
               } else if(element.attachEvent) {
                 element.attachEvent('on' + type, handler);
               } else {
-               /* element.onclick === element['onclick'];
+                element.onclick === element['onclick'];
                 element['on' + type] = handler;
               }
             },
@@ -16,7 +16,7 @@ var eventUtil = {
               } else if(element.detachEvent) {
                 element.detachEvent('on' + type, handler);
               } else {
-               /* element.onclick === element['onclick'];
+                element.onclick === element['onclick'];
                 element['on' + type] = null;
               }
             }
