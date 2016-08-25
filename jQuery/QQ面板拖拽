@@ -1,0 +1,21 @@
+
+1.
+  pageX:
+  pageY:
+  //鼠标在事件发生时的坐标,All browser band this event;
+  clientX:
+  clientY:
+  //每次移动触发一个事件
+    mousemove()
+    
+  //html元素距离浏览器的距离:
+    html.offsetLeft;
+              Top;
+        //获取元素的属性:
+        html.offsetWidth:宽
+        html.offsetHeight:高
+        document.documentElement.clientWidth,文档宽度
+        document.documentElement.clientHeight,文档高度
+    
+  //每个要移动的窗口，有个绝对定位。
+  //对盒子做定位的时候是对盒子的左上角的定点左定位
