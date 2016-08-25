@@ -1,0 +1,102 @@
+1.事件冒泡
+  1.1 理解事件流
+    1.1.1 描述的是从页面中接受事件的顺序
+     1.1.1.1
+      事件冒泡：ie
+        由最具体的元素接收，逐级向上传递最不具体的节点（文档）
+      事件捕获: netscape
+      document>html>body>div>input
+        和事件冒泡相反的
+  1.2 使用事件处理程序
+    1.2.1 
+      1.2.1.1 html事件，内联事件，加在标签里面的。
+          <input type="button" value="按钮" id="btn" onclick="showMes()" />
+          <script>
+            function showMes() {
+              arguements;
+            }
+          </script>
+      1.2.1.2 DOM 0级处理程序：
+          较传统的方式：把一个函数值给一个事件的的处理事件属性
+          var btn2 = document.getElementById("btn2");
+          btn2.onclick = function () {
+            alert("Hello World");
+            }
+          btn2.onclick = null; /*删除事件*/
+      1.2.1.3 DOM 2级事件处理程序
+          定义了两个方法：用于处理指定和删除指定事件处理程序的操作.
+          布尔值：false 冒泡， true 捕获
+          addEventListener(事件名，处理函数名，布尔值),removeEventListener();
+          btn3.addEventListener('click', showMes, false);
+          btn3.addEventListener('click', function () {
+            alert(this.value);
+          }, false);
+          btn3.removeEventListener('click', showMes, false);
+      1.2.1.4
+        IE事件处理程序
+          btn4.attachEvent('onclick', showMes);
+          btn4.detachEvent('onclick', showMes);
+      1.2.1.5
+        跨浏览器的事件处理程序:兼容所有的浏览器
+          var eventUtil = {
+            addHandler: function (element, type, handler) {
+              if(element.addEventListener){
+                element.addEventListener(type, handler, false);
+              } else if(element.attachEvent) {
+                element.attachEvent('on' + type, handler);
+              } else {
+               /* element.onclick === element['onclick'];
+                element['on' + type] = handler;
+              }
+            },
+            
+            removeHandler: function (element, type, handler) {
+              if(element.removeEventListener){
+                element.removeEventListener(type, handler, false);
+              } else if(element.detachEvent) {
+                element.detachEvent('on' + type, handler);
+              } else {
+               /* element.onclick === element['onclick'];
+                element['on' + type] = null;
+              }
+            }
+          }
+          
+          
+          eventUtil.addHandler(btn3, 'click', showMes);
+  1.3 不同的事件类型
+    1.3.1 事件对象：event （所有事件出发都是event）
+    1.3.2 
+      function showMes(event) {
+        alert(event.type);
+      }
+      
+    1.3.3
+      type: 事件的类型
+      target: 事件加在一个什么html元素上， event.target.nodeName;
+      stopPropagation():阻止事件冒泡。 
+      function showMes(event) {
+        alert(event.target.nodeName);
+        event.stopPropagation();
+      preventDefault()方法，阻止事件的默认行为
+        <a href="event.html" id="go">跳转</a>
+        var go = document.getElementById("go");
+        function stopGo(event){
+          event.stopPropagation();
+          event.preventDefault();
+        bubbles
+          event.bubbles:true or false;
+        canselable
+          event.canselable:如果用过preventDefault(),则true，否则false；
+        }
+      }
+      
+    1.3.4
+      IE的事件对象
+        event.srcElement;
+      event = event || window.event;
+      var ele = event.target || event.srcElement;
+      cancelBubble属性，阻止事件冒泡：
+            true:阻止冒泡，false不阻止
+      
+    
