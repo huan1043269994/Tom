@@ -1,0 +1,33 @@
+1. table+
+  <table>
+    <tr>
+        <td></td>
+    </tr>
+</table>
+
+2.dl+
+  <dl>
+    <dt></dt>
+    <dd></dd>
+</dl>
+
+3.bq:
+  <blockquote></blockquote>
+  
+4.link
+  <link rel="stylesheet" href="">
+  
+5. script:src
+  <script src=""></script>
+  
+6.cc:ie6
+  注释
+
+7:条目编写，类扩展 ul#nav>li.item-$*5
+  <ul id="nav">
+    <li class="item-1"></li>
+    <li class="item-2"></li>
+    <li class="item-3"></li>
+    <li class="item-4"></li>
+    <li class="item-5"></li>
+</ul>
