@@ -1,0 +1,17 @@
+1.keyDown:当用户键盘上任意键按下时触发，而且按住不放的话会重复触发。
+2.keyPress:知识字符键
+3.keyUp:用户释放键盘上的键时触发
+  以上三种选keyup;
+  
+  html.onkeyup = function(){}
+      .onkeydown = function () {}
+      .onkeypress = function () {}
+  keyCode表：
+
+    http://www.phpweblog.net/kiyone/archive/2007/04/19/1138.html
+4.实际上一切都可以通过firebug测，不需要记.
+  console.log(event.keyCode);
+  console.log(random);
+  console.log(html.offsetLeft);等等
+
+4.event的keyCode属性有响应的键值
