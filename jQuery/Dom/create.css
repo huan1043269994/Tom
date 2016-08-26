@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    width: 400px;
+    height: 70px;
+    padding-top: 20px;
+    line-height: 40px;
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.btns {
+    width: 400px;
+    height: 30px;
+    line-height: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btns span {
+    display: block;
+    float: left;
+    margin-right: 40px;
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    background-color: #036;
+    color: #FFF;
+    border-radius: 7px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btns #play {
+    margin-left: 115px;
+}
