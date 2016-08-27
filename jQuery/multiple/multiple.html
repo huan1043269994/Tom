@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 100px;
+            background: red;
+            margin-bottom: 20px;
+            filter: alpha(opacity:30);
+            opacity: 0.3;
+            float: left;
+            margin-left: 10px;
+        }
+        
+    </style>
+
+    <script>
+        window.onload = function () {
+            var aLi = document.getElementsByTagName('div');
+            for(var i = 0; i < aLi.length; i++) {
+                aLi[i].timer = null;
+                aLi[i].alpha = 0;
+                aLi[i].onmouseover = function () {
+                    startMove(this, 100);
+                }
+
+                aLi[i].onmouseout = function () {
+                    startMove(this, 30);
+                }
+            }
+        };
+
+        //var alpha = 30;
+        function startMove(obj, iTarget) {
+            clearInterval(obj.timer);
+
+            obj.timer = setInterval(function () {
+                var speed = 0;
+
+                if(obj.alpha > iTarget) {
+                    speed = -10;
+                } else {
+                    speed = 10;
+                }
+
+                if(obj.alpha == iTarget) {
+                    clearInterval(obj.timer);
+                } else {
+                    obj.alpha += speed;
+                    obj.style.filter = 'alpha(opacity:' + obj.alpha + ')';
+                    obj.style.opacity = obj.alpha/100;
+                }
+
+                obj.style.opacity = obj.a
+            }, 30)
+        }
+        
+
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+
+</body>
+</html>
