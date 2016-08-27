@@ -8,3 +8,15 @@
 1.速度动画
   
 2.透明度动画
+
+3.缓冲运动：
+  style.left:返回一个字符串 数字+px,可能小数
+  offsetLeft:返回一个向下取整的整数
+  speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);才能到达指定值
+  否则会停留在一个指定位置一只进行下去，貌似每个数都有个值....
+  
+4.多物体运动
+  aLi[i].index = 1
+  ==> aLi[i].timer = null;一样的效果，添加一个属性
+  
+  所有的属性基本不能公用。 alpha,timer等等的
