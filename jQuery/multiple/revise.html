@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            height: 200px;
+            width: 400px;
+            //兼容ie firefox chrome
+            filter: alpha(opacity:30);
+            opacity: 0.3;
+            margin-bottom: 10px;
+            background: yellow;
+            border: 2px solid #000;
+        }
+        
+    </style>
+
+    <script>
+        window.onload = function () {
+            var aLi = document.getElementsByTagName('li');
+            //多元素
+            for(var i = 0; i < aLi.length; i++) {
+                aLi[i].timer = null;//避免相互争夺
+                aLi[i].alpha = 30;
+                aLi[i].onmouseover = function () {
+                    startMove(this, 'opacity', 100);
+                };
+
+                aLi[i].onmouseout = function () {
+                    startMove(this, 'opacity', 30);
+                };
+            }
+        };
+
+        //var alpha = 30;
+
+        function startMove(obj, attr, iTarget) {
+            clearInterval(obj.timer);
+            var speed = 0;
+            obj.timer = setInterval(function () {
+                var icur = 0;
+                if(attr == 'opacity') {
+                //避免小数带来的影响，因为计算机处理的不到位,判断是否是透明度，因为单位不同，一个小数和一个整数。
+                    icur = Math.round(parseFloat(getStyle(obj, attr))*100);
+                } else {
+                    icur = parseInt(getStyle(obj, attr));
+                }
+
+                speed = (iTarget - icur)/8;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                if(icur == iTarget) {
+                    clearInterval(obj.timer);
+                } else {
+                    if(attr == 'opacity') {
+                    //兼容火狐和ie, 'alpha(opacity:' + (icur + speed) + ')';
+                        obj.style.filter = 'alpha(opacity:' + (icur + speed) + ')';
+                        obj.style.opacity = (icur + speed)/100;
+                    } else {
+                        obj.style[attr] = icur + speed + 'px';
+                    }
+
+                }
+            });
+        }
+        //获取真正的样式.
+        function getStyle(obj, attr) {
+            if(obj.currentStyle) {
+                return obj.currentStyle[attr];
+            } else {
+                return getComputedStyle(obj, false)[attr];
+            }
+        }
+        
+
+    </script>
+</head>
+<body>
+<ul>
+    <li id="li1"></li>
+    <li id="li2"></li>
+</ul>
+
+</body>
+</html>
