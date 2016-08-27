@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        div {
+            margin: 0 auto;
+            height: 200px;
+            width: 300px;
+            background-color: pink;
+            opacity: 0.3;
+        }
+    </style>
+
+    <script>
+
+        window.onload = function () {
+            var odiv = document.getElementById('div1');
+            odiv.onmouseover = function () {
+                startMove(100);
+            };
+
+            odiv.onmouseout = function () {
+                startMove(30);
+            };
+        };
+        var timer = null;
+        var alpha = 30;
+        function startMove (iTarget) {
+            var odiv = document.getElementById('div1');
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var speed = 0;
+                if(alpha > iTarget) {
+                    speed = -10;
+                } else {
+                    speed = 10;
+                }
+
+                if(alpha == iTarget) {
+                    clearInterval(timer);
+                } else {
+                    alpha += speed;
+                    odiv.style.filter = 'alpha(opacity:' +alpha + ')';
+                    odiv.style.opacity = alpha/100
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+
+</body>
+</html>
