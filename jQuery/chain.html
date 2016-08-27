@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            height: 200px;
+            width: 400px;
+            filter: alpha(opacity:30);
+            opacity: 0.3;
+            margin-bottom: 10px;
+            background: yellow;
+            border: 2px solid #000;
+        }
+        
+    </style>
+
+    <script>
+        window.onload = function () {
+            var aLi = document.getElementById('li1')
+                aLi.timer = null;
+
+                aLi.onmouseover = function () {
+                    startMove(aLi, 'opacity', 100, function () {
+                        startMove(aLi, 'height', 300);
+                    });
+                };
+
+                aLi.onmouseout = function () {
+                    startMove(aLi, 'opacity', 30);
+                };
+        };
+
+        //var alpha = 30;
+
+        function startMove(obj, attr, iTarget, fn) {
+            clearInterval(obj.timer);
+            var speed = 0;
+            obj.timer = setInterval(function () {
+                var icur = 0;
+                if(attr == 'opacity') {
+                    icur = Math.round(parseFloat(getStyle(obj, attr))*100);
+                } else {
+                    icur = parseInt(getStyle(obj, attr));
+                }
+
+                speed = (iTarget - icur)/8;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                if(icur == iTarget) {
+                    clearInterval(obj.timer);
+                    if(fn) {
+                        fn();
+                    }
+                } else {
+                    if(attr == 'opacity') {
+                        obj.style.filter = 'alpha(opacity:' + (icur + speed) + ')';
+                        obj.style.opacity = (icur + speed)/100;
+                    } else {
+                        obj.style[attr] = icur + speed + 'px';
+                    }
+
+                }
+            });
+        }
+
+        function getStyle(obj, attr) {
+            if(obj.currentStyle) {
+                return obj.currentStyle[attr];
+            } else {
+                return getComputedStyle(obj, false)[attr];
+            }
+        }
+        
+
+    </script>
+</head>
+<body>
+<ul>
+    <li id="li1"></li>
+    <li id="li2"></li>
+</ul>
+
+</body>
+</html>
