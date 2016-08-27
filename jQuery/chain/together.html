@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            height: 200px;
+            width: 400px;
+            filter: alpha(opacity:30);
+            opacity: 0.3;
+            margin-bottom: 10px;
+            background: yellow;
+            border: 2px solid #000;
+        }
+        
+    </style>
+
+    <script>
+        window.onload = function () {
+            var aLi = document.getElementById('li1')
+                aLi.timer = null;
+
+                aLi.onmouseover = function () {
+                    startMove(aLi, {opacity: 100, width: 500, height: 300});
+                };
+
+                aLi.onmouseout = function () {
+                    startMove(aLi, {opacity: 30, width: 400, height: 200});
+                };
+        };
+
+        //var alpha = 30;
+        //startMove(obj, {attr1: iTarget, attr2: iTarget}, fn);
+        //startMove(obj, json, fn);
+        //其实不用json，用map等也可以，json是键值对，传数据。
+        function startMove(obj, json, fn) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+            //当所有的动画都完了之后再执行清除定时器的动作。
+                var flag = true;
+                for(var attr in json) {
+                    var icur = 0;
+                        if(attr == 'opacity') {
+                            icur = Math.round(parseFloat(getStyle(obj, attr))*100);
+                        } else {
+                            icur = parseInt(getStyle(obj, attr));
+                        }
+
+                        var speed = (json[attr] - icur)/8;
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                        if(icur != json[attr]) {
+                            flag = false;
+                        }
+                    if(attr == 'opacity') {
+                        obj.style.filter = 'alpha(opacity:' + (icur + speed) + ')';
+                        obj.style.opacity = (icur + speed)/100;
+                    } else {
+                        obj.style[attr] = icur + speed + 'px';
+                    }
+
+                        }
+                    if(flag) {
+                        clearInterval(obj.timer);
+                        if(fn) {
+                            fn();
+                        }
+                    }
+                }, 30);
+
+        }
+
+        function getStyle(obj, attr) {
+            if(obj.currentStyle) {
+                return obj.currentStyle[attr];
+            } else {
+                return getComputedStyle(obj, false)[attr];
+            }
+        }
+        
+
+    </script>
+</head>
+<body>
+<ul>
+    <li id="li1"></li>
+    <li id="li2"></li>
+</ul>
+
+</body>
+</html>
