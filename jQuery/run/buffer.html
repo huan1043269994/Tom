@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        body, div, span {
+            margin: 0;
+            padding: 0;
+        }
+        #div1 {
+            height: 200px;
+            width: 200px;
+            background-color: pink;
+            position: relative;
+            left: -200px;
+            top: 0;
+        }
+
+        #div1 span {
+            width: 20px;
+            height: 50px;
+            background-color: blue;
+            position: absolute;
+            left: 200px;
+            top: 75px;
+        }
+    </style>
+
+    <script>
+
+        window.onload = function () {
+            var odiv = document.getElementById('div1');
+            odiv.onmouseover = function () {
+                startMove(0);
+            };
+
+            odiv.onmouseout = function () {
+                startMove(-200);
+            };
+        };
+        var timer = null;
+        function startMove (iTarget) {
+            var odiv = document.getElementById('div1');
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var speed = (iTarget - odiv.offsetLeft)/10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(odiv.offsetLeft == iTarget) {
+                    clearInterval(timer);
+                } else {
+                    console.log(speed);
+                    odiv.style.left = odiv.offsetLeft + speed + 'px';
+                    console.log(odiv.style.left);
+                    console.log(odiv.offsetLeft);
+                }
+            }, 30);
+        }
+
+    </script>
+</head>
+<body>
+<div id="div1">
+    <span id="span1">点 我!</span>
+</div>
+
+</body>
+</html>
