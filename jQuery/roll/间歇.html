@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #moocBox ul li {
+            height: 24px;
+            list-style: none;
+        }
+
+        #moocBox ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            height: 20px;
+            width: 100px;
+            position: relative;
+            left: 20px;
+            top: 20px;
+            float: left;
+        }
+
+        #moocBox a:hover {
+            background: #cdcdcd;
+            color: #D1417E;
+        }
+
+        #mooc {
+            width: 400px;
+            border: 5px solid #cccccc;
+            box-shadow: 2px 4px 6px #000;
+            border-radius: 12px;
+            margin: 50px auto 0;
+        }
+
+        #moocBox {
+            height: 200px;
+            width: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        #moocTitle {
+            overflow: hidden;
+            background-image: -moz-linear-gradient(top, #f05e6f, #c9394a); /* Firefox */
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f05e6f), color-stop(1, #c9394a)); /* Saf4+, Chrome */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8fa1ff', endColorstr='#f05e6f', GradientType='0'); /* IE*/
+            height: 60px;
+            border-radius: 7px 7px 0 0;
+            line-height: 60px;
+            color: #FFF;
+            font-size: 30px;
+            line-height: 48px;
+            padding-top: 14px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        #moocTitle a {
+            color: #FFF;
+            font-size: 15px;
+            position: absolute;
+            top: 30px;
+            right: 14px;
+            display: inline;
+            text-decoration: none;
+        }
+
+    </style>
+
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById('mooc');
+            var box2 = document.getElementById('moocBox');
+            var con1 = document.getElementById('con1');
+            var con2 = document.getElementById('con2');
+            var aLi = box2.getElementsByTagName('a');
+
+            function setTime() {
+                if(box2.scrollTop >= con1.offsetHeight) {
+                    box2.scrollTop = 0;
+                } else {
+                    box2.scrollTop++;
+                }
+            }
+
+            con2.innerHTML = con1.innerHTML;
+            var timer = setInterval(setTime, 50);
+
+            for(var i = 0; i < aLi.length; i++) {
+                aLi[i].onmouseover = function () {
+                    clearInterval(timer);
+                };
+
+                aLi[i].onmouseout = function () {
+                    timer = setInterval(setTime, 50);
+                };
+            }
+
+
+        }
+
+    </script>
+</head>
+<body>
+<div id="mooc">
+    <h3 id="moocTitle">幕客网最新课程<a href="#">更多>></a></h3>
+
+    <div id="moocBox">
+        <ul id="con1">
+            <li><a href=#">1.我是最强的</a><span></span></li>
+            <li><a href=#">2.我是最强的</a><span></span></li>
+            <li><a href=#">3.我是最强的</a><span></span></li>
+            <li><a href=#">4.我是最强的</a><span></span></li>
+            <li><a href=#">5.我是最强的</a><span></span></li>
+            <li><a href=#">6.我是最强的</a><span></span></li>
+            <li><a href=#">7.我是最强的</a><span></span></li>
+            <li><a href=#">8.我是最强的</a><span></span></li>
+            <li><a href=#">9.我是最强的</a><span></span></li>
+        </ul>
+        <ul id="con2"></ul>
+    </div>
+</div>
+
+</body>
+</html>
