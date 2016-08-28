@@ -19,4 +19,4 @@
   aLi[i].index = 1
   ==> aLi[i].timer = null;一样的效果，添加一个属性
   
-  所有的属性基本不能公用。 alpha,timer等等的
+  所有的属性基本不能公用。 alpha,timer等等.
