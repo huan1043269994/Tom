@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            height: 200px;
+            width: 300px;
+            background: #D1417E;
+            font-size: 35px;
+            font-weight: bold;
+            color: #FFF;
+            top: 10px;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #div1 p {
+            display: inline-block;
+        }
+
+    </style>
+
+    <script>
+        //加载事件
+        window.onload = function () {
+            showTime();
+        };
+
+        function showTime() {
+            var endtime = new Date("2016/9/3,12:0:0");
+            var nowtime = new Date();
+            var lefttime = parseInt((endtime.getTime() - nowtime.getTime())/1000);
+            var d = parseInt(lefttime/(60*60*24));
+            var h = parseInt(lefttime/(60*60)%24);
+            var m = parseInt(lefttime/60%60);
+            var s = parseInt(lefttime%60);
+            var result;
+            if(lefttime < 0) {
+                result = '团购结束';
+            } else {
+                result = '还剩' + d + '天' + h + '小时' + m + '分钟' + s + '秒';
+            }
+            document.getElementById('p1').innerHTML = result;
+            setTimeout(showTime, 500);
+
+        }
+
+
+    </script>
+</head>
+<body>
+<div id="div1">距离开学还有
+    <p id="p1">100</p>
+    <p>天</p>
+</div>
+
+</body>
+</html>
