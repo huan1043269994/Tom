@@ -1,0 +1,22 @@
+Date:返回当前日期和时间
+getDate() 查看date对象并返回日期(1-31),一个月的第几天
+getDay(): 星期几(0-6);
+getHours(): 返回小时数（0-23);
+getMinutes(): 返回分钟数(0-59);
+getMonth(): 返回月份值(0-11);
+getSeconds():返回秒
+getTime():返回毫秒数
+getYear():返回年份，用来获得年的最好。
+getFullYear(),来操作完整格式 2016
+
+返回完整的年：getFullYear();
+              getYear():实在1990的基础上算
+              getMonth():加一;
+              
+  算距离某一天还有多久： var curtime = new Date();
+                         var endtime = new Date("2014,6,6");
+                         
+                         var lefttime = Math.ceil((curtime.getTime() - endtime.getTime())/(1000/60/60/24));
+                         document.getElementById('txt1').innerHTML = lefttime;
+                         
+  商城倒计时效果：
