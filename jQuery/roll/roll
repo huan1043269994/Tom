@@ -1,0 +1,25 @@
+<marquee> </marquee>
+
+1.behavior:滚动的方式
+  alternate: 表示在两端之间来回滚动。
+  scroll:表示由一段滚动到另一端，会重复。
+  slide:表示由一端滚动到另一端，不会重复。
+  
+2.direction: down,up,left,right
+3.loop:滚动的次数，（loop=-1一直滚动，默认loop=-1)
+4.scrollamount:字幕滚动速度.
+5.scrolldelay:滚动的两次之间的延迟时间
+
+6.滚动区域的宽，高，背景色:
+        bgcolor="#CCFF66"
+        width:"250px"
+        height:"55px"
+        <marquee direction="up" bgcolor="#CCFF66" width="250px" height="55px"></marquee>
+7.时间;
+  <marquee onmouseover="this.stop();" onmouseout="this.start();" scrollamount="1" scrolldelay="100"
+    direction="up" loop="-1" behavior="scroll" height="99%" > Content </marqueq>
+
+8.无缝滚动
+9.间歇滚动
+10.单次滚动
+11.间歇循环滚动。
