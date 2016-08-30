@@ -1,0 +1,32 @@
+1.块状标签，有大有小，可能造成块溢出，所以要overflow:hidden
+2.二级菜单和描述其特征，或作解释的用: 商城二级菜单下的分类物品
+                                    <dl>
+                                      <dt></dt>
+                                      <dd></dd>
+                                    </dl>
+3.商城导航栏 <ul>
+              <div></div>
+              <li>
+                <div>
+                  <div>
+                    <dl>
+                      <dt></dt>
+                      <dd></dd>
+                      <dd></dd>
+                    </dl>
+                  </div>
+                  <div></div>
+                </div>
+              </li>
+              <li></li>
+              <li></li>
+            </ul>
+4.通过qq截图，量距离和颜色像素
+5.IE不兼容css:hover  所以在body里面加: behavior: url(css/csshover.htc);
+6.js闭包的概念，只保存循环里的最后一个循环
+7.为了让内容少的时候对齐，要设置高度
+8.为了让内容多的时候对齐，要考虑总高度,不能在一个屏幕上显示，让二级菜单高度上移几个像素： html.style.top = 3 + p'px';
+9:图片突出来:relative,
+10:脱离文档流：absolute
+11:z-index:显示层级
+12:dl dt dd a img ul li div 
