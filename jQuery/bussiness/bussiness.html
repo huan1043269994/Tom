@@ -198,7 +198,9 @@
             for(var i = 0; i < aLi.length; i++) {
                 aLi[i].index = i;
                 aLi[i].onmouseover = function () {
+                    //用类来触发hover事件，避免了css不兼容问题
                     this.className = 'lihover';
+                    //因为当内容较少的时候，方框就不对齐了，很不美观。
                     var h = (this.index - 1)*30 + 42;
                     var elems = this.getElementsByTagName('div')[0];
                     var h0 = elems.style.top + elems.offsetHeight;
