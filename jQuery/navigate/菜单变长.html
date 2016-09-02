@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        ul {
+            list-style: none;
+            border-bottom: 5px solid #eb6b1d;
+            height: 50px;
+            padding-left: 30px;
+        }
+
+        ul li {
+            float: left;
+            margin-top: 20px;
+        }
+
+        ul a {
+            background: #f1f1f1;
+            color: #000;
+            list-style: none;
+            text-decoration: none;
+            height: 30px;
+            line-height: 30px;
+            width: 100px;
+            display: block;
+            text-align: center;
+            border-radius: 10px 10px 0 0 ;
+            margin-right: 2px;
+
+        }
+
+        ul .current{
+            background: #eb6b1d;
+            color: #FFF;
+        }
+
+
+    </style>
+
+    <script>
+        window.onload = function () {
+            var aUl = document.getElementsByTagName('ul')[0];
+            var aLi = aUl.getElementsByTagName('a');
+            for(var i = 0; i < aLi.length; i++) {
+                aLi[i].onmouseover = function () {
+                    clearInterval(timer);
+                    this.className = 'current';
+                    var that = this;
+                    var num = 100;
+                    var timer = setInterval(function () {
+                        that.style.width = that.offsetWidth + 8 + 'px';
+
+                        if(that.offsetWidth >= 140) {
+                            clearInterval(timer);
+                        }
+
+                    }, 30);
+                };
+
+                aLi[i].onmouseout = function () {
+                    clearInterval(timer);
+                    this.className = '';
+                    var that = this;
+                    var timer = setInterval(function () {
+                        that.style.width = that.offsetWidth - 8 + 'px';
+                        if(that.offsetWidth <= 100) {
+                            clearInterval(timer);
+                        }
+                    }, 30);
+                };
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li><a href="#" class="current">首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页</a></li>
+        <li><a href="#">新闻快讯</a></li>
+        <li><a href="#">产品展示</a></li>
+        <li><a href="#">售后服务</a></li>
+        <li><a href="#">联系我们</a></li>
+    </ul>
+</body>
+
+
+</html>
