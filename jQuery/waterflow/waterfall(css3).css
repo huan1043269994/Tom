@@ -1,0 +1,36 @@
+
+
+#main {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    -o-column-count: 4;
+    -ms-column-count: 4;
+    -webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    -o-column-gap: 5px;
+    -ms-column-gap: 5px;
+    -webkit-column-rule: 1px dashed red;
+    -moz-column-rule: 1px dashed red;
+    -o-column-rule: 1px dashed red;
+    -ms-column-rule: 1px dashed red;
+
+
+}
+
+.box {
+    padding: 15px 0 0 15px;
+}
+
+.Pic {
+    padding: 10px;
+    border: 1px solid #CCC;
+    box-shadow: 0 0 5px #CCC;
+    border-radius: 5px;
+    width: 165px;
+}
+
+.Pic img {
+    display: block;
+    width: 165px;
+    height: auto;
+}
