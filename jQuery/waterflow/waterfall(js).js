@@ -41,7 +41,7 @@ function waterfall(oPar, box) {
                 minIndex = getMinIndex(elems, minH);
 
             oBoxs[i].style.position = 'absolute';
-            oBoxs[i].style.left = oBoxs[minIndex].offsetLeft + 'px';
+            oBoxs[i].style.left = oBoxs[minIndex].offsetLeft + 'px';  // minIndex * oBoxW + 'px';
             oBoxs[i].style.top = minH + 'px';
             elems[minIndex] += oBoxs[i].offsetHeight;
         }
