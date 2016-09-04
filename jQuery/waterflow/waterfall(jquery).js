@@ -1,54 +1,40 @@
-function checkScrollSlide() {
-    var oBox = $('#main>div:last'),
-        oHeight = $(window).height(),
-        aHeight = $(window).scrollTop(),
-        eHeight = oBox.offset().top + Math.floor(oBox.outerHeight/2);
-
-    return (eHeight < oHeight + aHeight) ? true : false;
-}
-
-$(window).on("load",function () {
-    waterfall();
+$(function () {
+   waterfall();
 
     var dataInt = {"data": [{"src": "0.jpg"}, {"src": "1.jpg"}, {"src": "2.jpg"}, {"src": "3.jpg"}]};
 
-    $(window).on('scroll',function () {
-       if( checkScrollSlide() ) {
-           $.each(dataInt.data, function (key, value) {
-              var oDiv = $('<div>').addClass('box').appendTo($('#main')),
-                  eDiv = $('<div>').addClass('Pic').appendTo($(oDiv)),
-                  oImg = $('<img>').attr('src', "images/" + $(value).attr('src')).appendTo($(eDiv));
-               console.log(value);
-           });
+    $(window).scroll(function () {
+        if(checkScrollSlide()) {
 
-           waterfall();
-       }
-    });
-
+            $.each(dataInt.data, function (key, value) {
+                var oDiv = $('<div>').addClass('box').appendTo($('#main'));
+                var eDiv = $('<div>').addClass('Pic').appendTo($(oDiv));
+                var oImg = $('<img>').attr('src', "images/" + $(value).attr('src')).appendTo($(eDiv));
+            });
+            waterfall();
+        }
+    })
 });
 
 function waterfall() {
-    var oBoxs = $('#main>div'),
-        oBoxW = oBoxs.eq(0).outerWidth(),
-        oBody = $(window).width(),
-        oNum = Math.floor(oBody/oBoxW),
-        elems = [];
+    var oBoxs = $('#main>div');
+    var w = oBoxs.eq(0).outerWidth();
+    var oNum = Math.floor($(window).width() / w);
 
-    $('#main').css({
-        'width': oBoxW * oNum,
-        'margin': '0 auto'
-    });
+    $('#main').width(oNum * w).css('margin', '0 auto');
+
+    var elems = [];
 
     oBoxs.each(function (index, value) {
        if(index < oNum) {
            elems[index] = oBoxs.eq(index).outerHeight();
        } else {
-           var minH = Math.min.apply(null, elems),
-               minIndex = $.inArray(minH, elems);
+           var minH = Math.min.apply(null, elems);
+           var minIndex = $.inArray(minH, elems);
 
            $(value).css({
-               'position': 'absolute',
-               'left': minIndex * oBoxW + 'px',
+              'position': 'absolute',
+               'left': w* minIndex + 'px',
                'top': minH + 'px'
            });
 
@@ -57,3 +43,11 @@ function waterfall() {
     });
 }
 
+function checkScrollSlide() {
+    var oBox = $('#main>div').last();
+    var oHeight = $(window).height();
+    var aHeight = $(window).scrollTop();
+    var eHeight = oBox.offset().top + Math.floor(oBox.outerHeight() / 2);
+
+    return (eHeight < oHeight + aHeight) ? true : false;
+}
