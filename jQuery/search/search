@@ -1,0 +1,19 @@
+<input type="button" />
+<input type="submit" />
+
+1.input是自闭合标签，不能定义复杂样式按钮
+2.button:在按钮里面加图片
+3.<form>表单
+action:代表被提交的服务器指定端口
+<form action = "http://www.baidu.com/s" target="_blank" method="get">
+  <input type="text" name="wd" class="search_key" placeholder="搜索内容>
+  <input type="submit" value="搜索" class="search_btn search_btn_reset">
+</form>
+
+//  在表单中，type="submit"的按钮能够把表单的内容提交到服务器，必须放置到form里面
+
+4.border:none;去默认边框
+  outline:去掉输入框选中的边框颜色
+
+5.为了让ie按照正常的浏览器效果渲染：
+在head里面：<meta http-equiv="X-UA-Compatible" content="IE=edge" />
