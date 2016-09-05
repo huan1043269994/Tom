@@ -97,7 +97,7 @@
         <div id="sub_main">
             <div id="search_logo"></div>
             <form action="http://cn.bing.com/search" target="_blank" id="search_box">
-                <input type="text" id="search_txt" autocomplete="off" name="q">
+                <input type="text" id="search_txt" autocomplete="off" name="q">  //autocomplete:防止记录已经输入的历史
                 <input type="submit" id="search_btn" value="">
             </form>
         </div>
@@ -131,10 +131,10 @@
                 }).show();
             };
 
-            $.ajax({
+            $.ajax({  //jquery异步
                 type: "get",
-                url: "http://api.bing.com/qsonhs.aspx?type=cb&cb=callback&q=" + inputTxt,
-                async: false,
+                url: "http://api.bing.com/qsonhs.aspx?type=cb&cb=callback&q=" + inputTxt,  //jsonp跨域解决。
+                async: false, 
                 dataType: "jsonp",
                 jsonp: "callback",
                 jsonpCallback: "callback",
