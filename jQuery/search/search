@@ -37,3 +37,54 @@ action:代表被提交的服务器指定端口
   input: autocomplete="off" ,不自动记录用户的输入历史
 8.
   同步通信要考虑所有数据的刷新等等，会有一段空档期。不友好
+  
+9.Ajax
+  js:
+    var xhr;
+
+      if(window.ActiveObjectX) {
+          xhr = new window.ActiveObjectX('Microsoft.XMLHTTP');
+      } else if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+      }
+          xhr.onreadystatechange = function (d) {
+              if(xhr.status == 200 && xhr.readyState == 4) {
+                  var json = JSON.encode(d.reponseText);
+                  callback(json);
+              }
+          }
+      
+          xhr.open('get', url, false);
+          xhr.send(null);
+          
+  jquery:
+    $.get(url,callback, 'json');
+
+10. js同源策略
+    Ajax发送请求的url抵制与服务器地址必须在同一域名之下
+11. 通过nginx和fiddler工具吧网页放在api下
+12. 通过ajax发送请求，回调的是一个数据结构:AS
+13. $(document).bind('click'', function () {
+    $('#search-suggest').hide();
+});   //点击任何一处搜索框消失。
+14. 事件代理：点击相应的标签，跳转到指定的网页
+  
+  
+  js:
+          var fn = function () {...};
+      var callback = function (e) {
+          if(e.target.tagName == 'li') {
+              fn();
+          }
+      }
+      
+      if(document.attachEvent) {
+          document.attachEvent('onclick', callback);
+      } else if(document.addEventListener) {
+          document.attachEvent('click', callback, false);
+      } else {
+          document['onclick'] = callback
+      ;}
+      
+  jquery:
+    $('document').delegate('li', 'click', fn);
