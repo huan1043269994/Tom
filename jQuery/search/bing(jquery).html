@@ -88,16 +88,65 @@
             text-decoration: underline;
         }
 
+        #header {
+            height: 43px;
+            font-size: 13px;
+            margin: 0;
+            width: 100%;
+        }
+
+        #header ul {
+            list-style: none;
+            display: block;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            height: 43px;
+            line-height: 39px;
+            bottom: 0;
+            left: 0;
+            margin-left: 28px;
+        }
+
+        #header ul li {
+            display: inline;
+            zoom: 1;
+        }
+
+        #header ul li a {
+            vertical-align: middle;
+            line-height: 39px !important;
+            display: inline-block;
+            zoom: 1;
+            margin-left: 18px;
+            margin-right: 18px;
+            color: #acacac;
+            text-decoration: none;
+        }
+
+        #footer {
+            height: 30px;
+        }
 
     </style>
 </head>
 <body>
-    <div id="header"></div>
+    <div id="header">
+        <ul>
+            <li><a href="#">图片</a></li>
+            <li><a href="#">视频</a></li>
+            <li><a href="#">学术</a></li>
+            <li><a href="#">词典</a></li>
+            <li><a href="#">地图</a></li>
+            <li><a href="#">更多</a></li>
+        </ul>
+    </div>
     <div id="main">
         <div id="sub_main">
             <div id="search_logo"></div>
             <form action="http://cn.bing.com/search" target="_blank" id="search_box">
-                <input type="text" id="search_txt" autocomplete="off" name="q">  //autocomplete:防止记录已经输入的历史
+                <input type="text" id="search_txt" autocomplete="off" name="q">
                 <input type="submit" id="search_btn" value="">
             </form>
         </div>
@@ -131,10 +180,10 @@
                 }).show();
             };
 
-            $.ajax({  //jquery异步
+            $.ajax({
                 type: "get",
-                url: "http://api.bing.com/qsonhs.aspx?type=cb&cb=callback&q=" + inputTxt,  //jsonp跨域解决。
-                async: false, 
+                url: "http://api.bing.com/qsonhs.aspx?type=cb&cb=callback&q=" + inputTxt,
+                async: false,
                 dataType: "jsonp",
                 jsonp: "callback",
                 jsonpCallback: "callback",
