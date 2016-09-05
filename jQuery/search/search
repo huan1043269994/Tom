@@ -17,3 +17,23 @@ action:代表被提交的服务器指定端口
 
 5.为了让ie按照正常的浏览器效果渲染：
 在head里面：<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+6.智能提示：事件＋dom＋ajax通信
+  ul+li+去掉默认样式
+  获取数据： jquery/js + dom + ajax通信
+  
+  js:绑定事件
+    var el = document.getElementById('id');
+
+    if(el.attachEvent) {
+        el.attachEvent('onclick', fn);
+    } else if (el.addEventListener) {
+        el.addEventListener('click', fn, false);
+    } else {
+        el['onclick'] = fn;
+    }
+  jquery: $('#id').bind('click',fn);
+7.
+  input: autocomplete="off" ,不自动记录用户的输入历史
+8.
+  同步通信要考虑所有数据的刷新等等，会有一段空档期。不友好
