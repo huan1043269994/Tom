@@ -88,3 +88,7 @@ action:代表被提交的服务器指定端口
       
   jquery:
     $('document').delegate('li', 'click', fn);
+
+
+15.
+  jsonp跨域调用和挂在某个域名下。
