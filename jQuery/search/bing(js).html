@@ -1,0 +1,261 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>bing search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #333;
+        }
+
+        #main {
+            background-image: url('river.jpg');
+            width: 1228px;
+            height: 690px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #search_logo {
+            background-image: url('logo.png');
+            height: 53px;
+            width: 107px;
+            float: left;
+            margin: -5px 15px 0 0;
+        }
+
+        #search_box {
+            float: left;
+            background: #FFF;
+            padding: 5px;
+        }
+
+        #search_txt {
+            height: 25px;
+            line-height: 25px;
+            width: 350px;
+            float: left;
+            border: 0;
+            outline: none;
+        }
+
+        #search_btn {
+            float: left;
+            background-image: url('search-button.png');
+            height: 29px;
+            width: 29px;
+            border: 0;
+
+        }
+
+        #sub_main {
+            position: absolute;
+            left: 200px;
+            top: 150px;
+        }
+
+        #search_list {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            background: #FFF;
+            border: 1px solid #999;
+            display: none;
+        }
+
+        #search_result {
+            list-style: none;
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 388px;
+        }
+
+        #search_result li {
+            line-height: 25px;
+            font-size: 14px;
+            color: #777;
+            cursor: pointer;
+            padding: 3px;
+        }
+
+        #search_result li:hover {
+            background: #e5e5e5;
+            text-decoration: underline;
+        }
+
+        #header {
+            height: 43px;
+            font-size: 13px;
+            margin: 0;
+            width: 100%;
+        }
+
+        #header ul {
+            list-style: none;
+            display: block;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            height: 43px;
+            line-height: 39px;
+            bottom: 0;
+            left: 0;
+            margin-left: 28px;
+        }
+
+        #header ul li {
+            display: inline;
+            zoom: 1;
+        }
+
+        #header ul li a {
+            vertical-align: middle;
+            line-height: 39px !important;
+            display: inline-block;
+            zoom: 1;
+            margin-left: 18px;
+            margin-right: 18px;
+            color: #acacac;
+            text-decoration: none;
+        }
+
+        #footer {
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="header">
+        <ul>
+            <li><a href="#">图片</a></li>
+            <li><a href="#">视频</a></li>
+            <li><a href="#">学术</a></li>
+            <li><a href="#">词典</a></li>
+            <li><a href="#">地图</a></li>
+            <li><a href="#">更多</a></li>
+        </ul>
+    </div>
+    <div id="main">
+        <div id="sub_main">
+            <div id="search_logo"></div>
+            <form action="http://cn.bing.com/search" target="_blank" id="search_box">
+                <input type="text" id="search_txt" autocomplete="off" name="q">
+                <input type="submit" id="search_btn" value="">
+            </form>
+        </div>
+    </div>
+    <div id="search_list">
+        <ul id="search_result">
+            <li>ssss</li>
+            <li>ssss</li>
+        </ul>
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        function getDOM(id) {
+            return document.getElementById(id) || document;
+        }
+
+        function bindEvent (id, event, fn) {
+            var getId = getDOM(id);
+
+            if(getId.attachEvent) {
+                getId.attachEvent('on' + event, fn);
+            } else if(getId.addEventListener) {
+                getId.addEventListener(event, fn, false);
+            }
+        }
+
+        function getOffsetLeft (element) {
+            var actual = element.offsetLeft;
+            var current = element.offsetParent;
+            while(current != null) {
+                actual += current.offsetLeft;
+                current = current.offsetParent;
+            }
+
+            return actual;
+        }
+
+        function getOffsetTop (element) {
+            var actual = element.offsetTop;
+            var current = element.offsetParent;
+            while(current != null) {
+                actual += current.offsetTop;
+                current = current.offsetParent;
+            }
+
+            return actual;
+        }
+
+        var getAjax = function (url, callback) {
+            var xhr = null;
+            if(window.XMLHttpRequest) {
+                xhr = new window.XMLHttpRequest();
+            } else if(window.ActiveXObject) {
+                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    callback(JSON.parse(xhr.responseText))
+                }
+            };
+
+            xhr.open('get', url, false);
+            xhr.send(null);
+        };
+        function jsonpCallback(d) {
+            var d = d.AS.Results[0].Suggests;
+            var html = '';
+            for(var i = 0; i < d.length; i++) {
+                html += '<li>' + d[i].Txt + '</li>';
+            }
+
+            getDOM('search_result').innerHTML = html;
+
+        }
+
+        bindEvent('search_txt', 'keyup', function() {
+            var searchText = getDOM('search_txt').value;
+            jsonpCallback(d);
+            var el = getDOM('search_box');
+            var search_list = getDOM('search_list');
+
+            search_list.style.left = getOffsetLeft(el) + 'px';
+            search_list.style.top = getOffsetTop(el) + 39 + 'px';
+            search_list.style.position = 'absolute';
+            search_list.style.display = 'block';
+
+        });
+
+        bindEvent(document, 'click', function () {
+            getDOM('search_list').style.display = 'none';
+        });
+
+        var delegateEvent = function (target, event, fn) {
+            bindEvent(document, event, function (e) {
+                if(e.target.nodeName == target.toUpperCase()) {
+                    fn.call(e.target);
+                }
+            });
+        };
+
+        delegateEvent('li', 'click', function () {
+            var keyword = this.innerHTML;
+            location.href = 'http://cn.bing.com/search?q=' + keyword;
+        })
+
+
+    </script>
+    <script type="text/javascript" src="http://api.bing.com/qsonhs.aspx?jsonp=jsonpCallback"></script>
+</body>
+</html>
