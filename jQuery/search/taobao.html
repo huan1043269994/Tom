@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>taobao</title>
+    <style>
+        @font-face {font-family: "iconfont";
+            src: url('iconfont.eot?t=1473215614'); /* IE9*/
+            src: url('iconfont.eot?t=1473215614#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('iconfont.woff?t=1473215614') format('woff'), /* chrome, firefox */
+            url('iconfont.ttf?t=1473215614') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+            url('iconfont.svg?t=1473215614#iconfont') format('svg'); /* iOS 4.1- */
+        }
+        body {
+            font: 12px/1.5 tohoma,arial,sans-serif;
+        }
+        .box1 {
+            position: relative;
+        }
+
+        .box4 {
+            float: right;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        .search_btn {
+            border: 0;
+            height: 45px;
+            line-height: 45px;
+            width: 100px;
+            font-size: 18px;
+            background: #e8451b;
+            color: #FFF;
+            cursor: pointer;
+        }
+
+        .box6 a {
+            color: #6c6c6c;
+        }
+
+        .box6 {
+            float: right;
+            margin: 5px 0 0 15px;
+        }
+
+        .box5 {
+            background: #e8451b;
+            height: 39px;
+            overflow: hidden;
+            padding: 2px 0 4px 0;
+            padding-left: 77px;
+        }
+
+        .box5 input {
+            height: 39px;
+            line-height: 39px;
+            width: 100%;
+            border: 0 none;
+            outline: 0;
+            background: #FFF;
+        }
+
+        ul,li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box2 {
+            height: 41px;
+            position: absolute;
+            background: #FFF;
+            width: 73px;
+            left: 2px;
+            top: 2px;
+            overflow: hidden;
+            border-left: 1px solid #f6f6f6;
+            border-right: 1px solid #e5e5e5;
+
+        }
+        .box2 li {
+            display: none;
+            list-style: none;
+            height: 41px;
+            line-height: 41px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        #search_logo {
+            font-family:"iconfont" !important;
+            font-size:14px;
+            font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .box5 i {
+            z-index: 2;
+            left: 86px;
+            top: 14px;
+            position: absolute;
+        }
+
+        .box2 li a {
+            color: #6c6c6c;
+        }
+
+        .box2 .selected {
+            background: #f6f6f6;
+            display: block;
+        }
+
+        .trigger-hover li {
+            display: block;
+        }
+
+        .trigger-hover {
+            height: auto;
+        }
+
+        .box2 .selected2 {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2" id="search_box">
+            <ul>
+                <li class="selected" id="tab_1"><a href="#">宝贝</a></li>
+                <li id="tab_2"><a href="#">店铺</a></li>
+            </ul>
+        </div>
+        <div class="box3">
+            <div class="box6">
+                <a href="#">高级<br />搜索</a>
+            </div>
+            <form >
+                <div class="box4">
+                    <button class="search_btn" >搜索</button>
+                </div>
+                <div class="box5">
+                    <input type="text" autocomplete="off" class="search_txt" x-webkit-speech=""/>
+                    <i id="search_logo">&#xe620;</i>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function getDOM(id) {
+            return document.getElementById(id) || document;
+        }
+
+        function bindEvent (id, event, fn) {
+            var oId = getDOM(id);
+
+            if(oId.attachEvent) {
+                oId.attachEvent('on' + event, fn);
+            } else if(oId.addEventListener) {
+                oId.addEventListener(event, fn, false);
+            }
+        }
+
+        bindEvent('search_box', 'mouseover', function () {
+            this.className += ' trigger-hover';
+        });
+
+        bindEvent('tab_1', 'mouseover', function () {
+            this.className += ' selected';
+        });
+
+        bindEvent('tab_1', 'mouseout', function () {
+            if(this.className.indexOf('selected2') < 0) {
+                this.className = '';
+            } else {
+                this.className = 'selected2';
+            }
+
+        });
+
+        bindEvent('tab_2', 'mouseover', function () {
+            this.className += ' selected';
+        });
+
+        bindEvent('tab_2', 'mouseout', function () {
+            if(this.className.indexOf('selected2') < 0)
+            {
+                this.className = '';
+            } else {
+                this.className = 'selected2';
+            }
+        });
+
+        bindEvent('tab_1', 'click', function () {
+            getDOM('search_box').className = 'box2';
+            this.className += ' selected2';
+            getDOM('tab_2').className = '';
+        });
+
+        bindEvent('tab_2', 'click', function () {
+            this.className += ' selected2';
+            getDOM('tab_1').className = '';
+            getDOM('search_box').className = 'box2';
+        })
+    </script>
+</body>
+</html>
