@@ -1,0 +1,2 @@
+1.处理ie6和chrome文字撑开,line-heigth:1,overflow:hidden;
+2.ie6右浮动和右margin，双边距bug，display:inline;
