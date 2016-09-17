@@ -1,2 +1,22 @@
 1.处理ie6和chrome文字撑开,line-heigth:1,overflow:hidden;
 2.ie6右浮动和右margin，双边距bug，display:inline;
+3.ie6是不允许子元素超过父元素的，父元素永远会吧子元素包含在里面
+4.ie6百分比算得不太好，处理width:25%可以 用 *width:24.9%;处理
+5.ie6 里面有时候要明确给明子元素的高度，防止自适应的时候掉下来
+6.继承
+7.下拉，单独做一个标签
+8.代码复用
+9.单独样式
+10.文档＋语义化。 样式 。 行为
+11.注意同与不同
+12.对齐简化 position:relative; top: left:
+13.ie6对不齐, top:-1px;  _top:4px;
+14.position:relative 可以增加优先级
+15.给整个最大背景加上颜色，可以查看ie6和chrome的样式问题，比较兼容
+16. ie6关于自适应： *padding:0  
+                    对于height:100% 不兼容，要有具体的高度
+                    overflow:hidden;
+17.用纯css样式绘制图片： http://www.cnblogs.com/sxwgf/archive/2012/01/17/2324256.html
+18.字体（大小什么的） 尽量不要去用奇数。
+19.height:19px; line-height:19px\9 兼容所有的ie；
+20:图片合并： 横向，纵向，横纵向， background-position:x y 轴
