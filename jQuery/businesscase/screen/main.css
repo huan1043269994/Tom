@@ -112,7 +112,7 @@
 
 /*product_list,screening_list_more*/
 .screening_list_more{padding-left:0.5%;}
-.item{width:33.3%; float:left; margin-bottom:10px;}
+.item{width:33.3%; float:left; margin-bottom:10px; position:relative;}
 .item_cont{padding:0 15px;}
 .item_img{height:170px; text-align:center;}
 .item_img img{height:170px;}
@@ -121,6 +121,7 @@
 .item_cont a:hover{text-decoration:underline;}
 .money{padding-top:10px; color:#D4105A; font-weight:bold;}
 .addCar{height:22px; border:1px solid #999; line-height:22px; padding-left:23px; padding-right:6px; display:inline-block; background:url('../images/icon/car.jpg') no-repeat 6px center;}
+.hot{height:52px; width:52px; background:url('../images/icon/hot.jpg') no-repeat; position:absolute; right:0; top:0;}
 
 /*page*/
 .page a, .page input, .page span{vertical-align:middle; position:relative;}
