@@ -1,134 +1,345 @@
-@charset "utf-8";
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>电商网站综合实战</title>
+	<link rel="stylesheet" href="style/main.css">
+	<link rel="stylesheet" href="style/reset.css">
+</head>
+<body>
+	<div class="header">
+		<div class="topBar">
+			<div class="comWidth">
+				<div class="leftArea">
+					<a href="#" class="collection">收藏慕课</a>
+				</div>
+				<div class="rightArea">
+					欢迎来到慕课网！<a href="#">[登录]</a><a href="#">[免费注册]</a>
+				</div>
+			</div>
+		</div>
+		<div class="logoBar">
+			<div class="comWidth">
+				<div class="logo_left fl">
+					<a href="#"><img src="images/logo.jpg" alt="logo" class="logo"></a>
+				</div>
+				<div class="logo_mid fl">
+					<input type="text" class="search_txt" />
+					<input type="submit" class="search_btn" value="搜 索"/>
+				</div>
+				<div class="logo_right fr">
+					<span class="shopCar">购物车</span>
+					<span class="shopNum">0</span>
+				</div>
+			</div>
+		</div>
+		<div class="navBar">
+			<div class="comWidth clearfix">
+				<div class="shopClass fl">
+					<h3>全部商品分类<i class="icon"></i></h3>
+				</div>
+				<ul class="shop_Item">
+				<li><a href="#" class="active">数码城</a></li>
+				<li><a href="#">天黑黑</a></li>
+				<li><a href="#">团购</a></li>
+				<li><a href="#">发现</a></li>
+				<li><a href="#">二手特卖</a></li>
+				<li><a href="#">名品会</a></li>
+				</ul>
+			</div>
+		</div>
 
-/*公用*/
-.leftArea{float:left;}
-.rightArea{float:right;}
-.comWidth{width:1000px; margin:0 auto;}
-
-/*分隔*/
-.hr_7{height:7px; width:100%;}
-.hr_15{height:15px; width:100%;}
-.hr_25{height:25px; width:100%;}
-.hr_45{height:45px; width:100%;}
-
-
-/*topBar*/
-.topBar{width:100%; background:#f7f7f7; height:31px; line-height:31px;}
-.collection{font-weight:bold; background:url('../images/icon/collection.jpg') no-repeat left center; padding-left:18px;}
-.topBar a:hover{color:#C00;}
-
-/*logoBar*/
-.logoBar{width:100%; height:85px; background:#1d7ad9;}
-.logo{padding-top:12px; padding-left:41px;}
-.logo_mid{margin-top:23px; margin-left: 185px;}
-.search_txt{width:350px; height:35px; padding:0 5px; background:#FFF; float:left;}
-.search_btn{height:35px; width:70px; background:#FF8C00; float:left; color:#FFF; font:14px/35px "Microsoft YaHei","微软雅黑";}
-.logo_right{margin-right:60px; margin-top:23px; width:145px; height:35px; background:#FF8C00; font:14px/35px "Microsoft YaHei","微软雅黑"; color:#FFF;}
-.shopCar{width:87px; border-right:1px solid #e27a00; float:left; text-indent:40px; background:url('../images/icon/shaoIcon.jpg') no-repeat 10px center;}
-.shopNum{background:url('../images/icon/sj.jpg') no-repeat 33px center; float:left; width: 27px; padding-right:29px; text-align:right; border-left:1px solid #FF9C01;}
-
-/*navBar*/
-.navBar{height:35px; width:100%; background:#1369C0; color:#FFF;}
-.shopClass{position:relative; left:0; top:0; width:190px;}
-.shopClass h3{height:35px; line-height:35px; text-align:center; font-family:"Microsoft YaHei","微软雅黑";}
-.icon{width:11px; height:7px; background:url('../images/icon/down.jpg') no-repeat; margin-left:11px; overflow:hidden; display:inline-block;}
-.shop_Item{float:left;}
-.shop_Item li{float:left;}
-.shop_Item a{height:35px; line-height:35px; color:#FFF; padding:0 35px; font-family:"Microsoft YaHei","微软雅黑"; float:left;}
-.shop_Item .active{background:#4593fd;}
-.info_img{display:block; margin:0 auto;}
-
-/*shopClass_show*/
-.shopClass_show{position:absolute; left:0; top:35px; width:190px; background:#4593FD; width:100%; padding-bottom:1px; float:left;}
-.shopClass_item{padding:13px 10px; line-height:16px; border-bottom:1px solid #3487F2; border-top:1px solid #5aa1fe;}
-.shopClass_item a{color:#FFF;}
-.shopClass_item dt{height:21px; line-height:21px; overflow:hidden; background:url('../images/icon/shop_sj.jpg') no-repeat right center;}
-.shopClass_item .b{font:14px/1 "Microsoft YaHei","微软雅黑";}
-.shopClass_item .aLink{height:20px; width:48px; background:url('../images/icon/aLink_bg.png') no-repeat left center; display:inline-block; text-align:center; text-decoration:underline;}
-
-/*banner*/
-.banner{margin-bottom:15px;}
-.banner_bar{position:relative; float:right; overflow:hidden;}
-.imgBox{position:absolute; left:0; top:0;}
-.banner_big .imgBox{width:1620px; height:326px;}
-.banner_big li{float:left;}
-.banner_big, .banner_big img{width:810px; height:326px; display:inline-block;}
-.imgNum a{width:20px; height:5px; background:#FFF; display:inline-block; margin:0 3px; overflow:hidden;}
-.imgNum{position:absolute; text-align:center; bottom:15px; left:0; width:100%;}
-.imgNum .active{background:#FF7700;}
-.icon_tit{height:44px; width:44px; background:url('../images/icon/shopIcon.jpg') no-repeat center center; float:left;}
-.shopTit h3{float:left; padding-left:15px; font-size:24px;}
-.shopTit{height:44px; line-height:44px; margin-bottom:15px;}
-.banner_sm, .banner_sm img{height:400px; width:190px;}
-.banner_sm img{display:block;}
-.banner_sm li{float:left;}
-.shopList{margin-bottom:15px;}
-.shopList .rightArea{height:396px; width:808px; border:1px solid #999; border-bottom:3px solid #FF7201; overflow:hidden;}
-.shopList_top,.shopList_sm{margin-right:-4px;}
-.shopItem{width:202px; height:279px; border-right:1px solid #999; border-bottom:1px solid #999; text-align:center; font-family:"Microsoft YaHei","微软雅黑"; float:left;}
-.shopItem h3{font-size:16px;}
-.shopImg img{width:202px; height:218px; display:block;}
-.shopItem p{line-height:21px; font-size:14px; color:#FF7300;}
-.shopItem_sm{width:202px; height:110px; border-right:1px solid #999; float:left; padding-top:6px;}
-.shop_smImg{height:95px; width:95px; float:left; text-align:center;}
-.shop_smImg img{height:95px; width:95px;}
-.shopText{padding-top:28px; width:100%;}
-.shopText p{color:#FF7300;}
-.shopText h3{font-size:16px; font-family:"Microsoft YaHei","微软雅黑"; font-weight:normal; color:#181818; line-height:30px;}
-.footer{width:100%; background:#d4d4d4; height:132px; text-align:center; padding:50px 0; line-height:24px;}
-.footer a{color:#000;}
-.footer i{font-style:normal; padding:0 3px;}
-.web img{padding-top:30px; margin-right:24px;}
-
-/*products*/
-.products_left{float:left; overflow:hidden;}
-.products_left{width:183px; border:1px solid #ccc; background:#f3f3f3;}
-.nav_tit{height:34px; line-height:34px; text-align:center; border-bottom:1px solid #D7D7D7; font-size:16px;}
-.nav_cont{padding:0 17px 3px; border-bottom:1px solid #D7D7D7;}
-.nav_cont h3{font-size:14px; height:30px; line-height:30px;}
-.nav_cont{line-height:25px;}
-.products_right{width:810px;}
-
-/*screening_box*/
-.screening{border-bottom:1px solid #D7D7D7;font-family: Verdana;}
-.screening dt{text-align:right; width:74px; margin-right:40px; float:left; line-height:32px;}
-.screening dd{float:left;}
-.limits{width:55px; text-align:left; line-height:32px;}
-.screening .active{background:#1d7ad9; color:#FFF;}
-.screening a{padding:2px;}
-.screening_lists{width:626px; line-height:32px;}
-.screening_lists li{float:left; width:20%;}
-.screen_more{margin-top:4px; margin-right:10px; float:left; border:1px solid #D7D7D7; height:23px; line-height:23px; padding:0 11px;}
-.screen_more a{padding-right:14px; background:url('../images/icon/sj_grey.gif') no-repeat right center;}
-
-/*addInfo*/
-.addInfo{height:31px;border:1px solid #D7D7D7; background:#F5F5F5;}
-.add_text{float:left; padding-left:12px; padding-right:6px;line-height:31px;}
-.select{float:left; margin-top:4px; height:22px; line-height:22px; border:1px solid #999; overflow:hidden; background:#FFF; position:relative;}
-.select h3{font-weight:normal; font-size:12px; padding-left:9px; padding-right:19px;}
-.select span{width:20px; height:22px;background:url('../images/icon/sj_blue.jpg') no-repeat center center; position:absolute; right:0; top:0;}
-.info_right{padding-right:80px; line-height:31px; }
-.info_right span em{font-style:normal; color:red;}
-
-/*product_list,screening_list_more*/
-.screening_list_more{padding-left:0.5%;}
-.item{width:33.3%; float:left; margin-bottom:10px; position:relative;}
-.item_cont{padding:0 15px;}
-.item_img{height:170px; text-align:center;}
-.item_img img{height:170px;}
-.item_cont p{line-height:20px;}
-.item_cont a{color:#000;}
-.item_cont a:hover{text-decoration:underline;}
-.money{padding-top:10px; color:#D4105A; font-weight:bold;}
-.addCar{height:22px; border:1px solid #999; line-height:22px; padding-left:23px; padding-right:6px; display:inline-block; background:url('../images/icon/car.jpg') no-repeat 6px center;}
-.hot{height:52px; width:52px; background:url('../images/icon/hot.jpg') no-repeat; position:absolute; right:0; top:0;}
-
-/*page*/
-.page a, .page input, .page span{vertical-align:middle; position:relative;}
-.page{text-align:center; position:relative; z-index:2;}
-.page a{margin:0 2px; padding:0 12px; height:24px; line-height:24px; display:inline-block; border:1px solid #CCC;}
-.hr{display:inline-block; padding:0 12px; margin:0 2px;}
-.morePage{height:24px; line-height:24px; padding-left:14px; display:inline-block;}
-.pageText{width:29px; height:24px; line-height:24px; border:1px solid #CCC; padding:0 3px; margin-left:4px; text-align;}
-.ye{padding:0 8px 0 6px;}
-.pageBtn{width:44px; height:24px; line-height:22px; text-align:center; border:1px solid #CCC; background:#E8E8E8;}
+	</div>
+	<div class="hr_15"></div>
+	<div class="products clearfix">
+		<div class="comWidth">
+			<div class="products_left">
+				<h3 class="nav_tit">手机、数码</h3>
+				<div class="nav_cont">
+					<h3>手机通讯</h3>
+					<ul class="nav_list">
+						<li><a href="#">全部手机</a></li>
+						<li><a href="#">拍照神器</a></li>
+					</ul>
+				</div>
+				<div class="nav_cont">
+					<h3>手机通讯</h3>
+					<ul class="nav_list">
+						<li><a href="#">全部手机</a></li>
+						<li><a href="#">拍照神器</a></li>
+						<li><a href="#">拍照神器</a></li>
+					</ul>
+				</div>
+				<div class="nav_cont">
+					<h3>手机通讯</h3>
+					<ul class="nav_list">
+						<li><a href="#">全部手机</a></li>
+						<li><a href="#">拍照神器</a></li>
+						<li><a href="#">全部手机</a></li>
+						<li><a href="#">拍照神器</a></li>
+						<li><a href="#">拍照神器</a></li>
+						<li><a href="#">全部手机</a></li>
+						<li><a href="#">拍照神器</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="products_right fr clearfix">
+				<div class="screen_box clearfix">
+					<dl class="screening clearfix">
+						<dt>手机</dt>
+						<dd class="limits"><a href="#" class="active">不限</a></dd>
+						<dd class="screening_lists">
+							<ul class="clearfix">
+								<li><a href="#">Samsung/三星</a></li>
+								<li><a href="#">Apple/苹果</a></li>
+								<li><a href="#">Huawei/华为</a></li>
+								<li><a href="#">Apple/苹果</a></li>
+								<li><a href="#">Huawei/华为</a></li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="screening clearfix">
+						<dt>手机</dt>
+						<dd class="limits"><a href="#" class="active">不限</a></dd>
+						<dd class="screening_lists">
+							<ul class="clearfix">
+								<li><a href="#">Samsung/三星</a></li>
+								<li><a href="#">Apple/苹果</a></li>
+								<li><a href="#">Huawei/华为</a></li>
+								<li><a href="#">Apple/苹果</a></li>
+								<li><a href="#">Huawei/华为</a></li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="screening clearfix">
+						<dt>手机</dt>
+						<dd class="limits"><a href="#" class="active">不限</a></dd>
+						<dd class="screening_lists">
+							<ul class="clearfix">
+								<li><a href="#">Samsung/三星</a></li>
+								<li><a href="#">Apple/苹果</a></li>
+								<li><a href="#">Huawei/华为</a></li>
+								<li><a href="#">Apple/苹果</a></li>
+								<li><a href="#">Huawei/华为</a></li>
+								<li><a href="#">Samsung/三星</a></li>
+								<li><a href="#">Apple/苹果</a></li>
+								<li><a href="#">Huawei/华为</a></li>
+								<li><a href="#">Apple/苹果</a></li>
+								<li><a href="#">Huawei/华为</a></li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="screening clearfix">
+						<dt>更多选项</dt>
+						<dd>
+							<div class="screen_more"><a href="#">Samsung/三星</a></div>
+							<div class="screen_more"><a href="#">三星三星三星三星三星三星三星</a></div>
+						</dd>
+					</dl>
+				</div>
+				<div class="hr_15"></div>
+				<div class="addInfo">
+					<div class="info_left fl">
+						<span class="add_text">送至</span>
+						<div class="select">
+							<h3>海淀区五环内</h3>
+							<span></span>
+						</div>
+					</div>
+					<div class="info_right fr">
+						<input type="checkbox" id="a_1">
+						<label for="a_1">仅显示有货</label>
+						<span>共<em>11123</em>件</span>
+					</div>
+				</div>
+				<div class="product_list screening_list_more clearfix">
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item_cont">
+							<div class="item_img">
+								<img src="images/shopImg.jpg" alt="shopImg" />
+							</div>
+							<p><a href="#">文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</a></p>
+							<p class="money">￥888</p>
+							<p>
+								<a href="#" class="addCar">加入购物车</a>
+							</p>
+						</div>
+						<div class="hot">
+						</div>
+					</div>
+				</div>
+				<div class="hr_25"></div>
+				<div class="page">
+					<a href="#">上一页</a>
+					<a href="#">1</a>
+					<a href="#">2</a>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">5</a>
+					<a href="#">6</a>
+					<span class="hr">...</span>
+					<a href="#">200</a>
+					<a href="#">下一页</a>
+					<span class="morePage">共200页，到第</span>
+					<input type="text" class="pageText">
+					<span class="ye">页</span>
+					<input type="button" value="确定" class="pageBtn">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="hr_25"></div>
+	<div class="footer">
+		<p>
+		<a href="#">慕课简介</a>
+			<i>|</i>
+		<a href="#">慕课公告</a>
+			<i>|</i>
+		<a href="#">招纳贤士</a>
+			<i>|</i>
+		<a href="#">联系我们</a>
+			<i>|</i>
+			客服热线：400-675-1234
+		</p>
+		<p>Copyright © 2006 - 2014 慕课版权所有   京ICP备09037834号   京ICP证B1034-8373号   某市公安局XX分局备案编号：123456789123</p>
+		<p class="web">
+		<a href="#"><img src="images/webLogo.jpg" alt="webLogo"></a>
+		<a href="#"><img src="images/webLogo.jpg" alt="webLogo"></a>
+		<a href="#"><img src="images/webLogo.jpg" alt="webLogo"></a>
+		<a href="#"><img src="images/webLogo.jpg" alt="webLogo"></a>
+		</p>
+	</div>
+</body>
+</html>
