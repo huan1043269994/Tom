@@ -10,6 +10,7 @@ function stripeTables() {
         rows = tables[i].getElementsByTagName("tr");
         for(var j = 0; j < rows.length; j++) {
             if(odd) {
+                //改进: addClass(rows[j], "odd");
                 rows[j].style.backgroundColor = "#ffc";
                 odd = false;
             } else {
