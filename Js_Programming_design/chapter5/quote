@@ -1,0 +1,26 @@
+1.构造函数，对象字面量
+2.使用字面量表示法也不会调用构造函数（例如Array(),Object()等的）
+3.toString(),valueOf(),toLocaleString()
+  3.1 toString() 返回由数组每个值的字符串拼接而成的一个以逗号分隔的字符串
+  3.2 valueOf() 只是对每一项调用返回字符串，还是数组
+  3.3 toLocaleString() 也是拼接字符串,只是会调用每一项的toLocaleString()方法。
+  3.4 隐式自动调用toString();
+  3.5 默认情况下，以上三个方法会以逗号分割字符串
+  3.6 数组中undefined和null调用之后会 "空字符串"
+  3.7 IE7在join传入空或者传入undefined会以undefined分隔
+4.以队列方法和栈方法：push(),pop(),shift(),unshift(),
+  4.1 push可以多项，unshift也可以多项
+5. reverse(),逆向
+  sort()可以传入函数
+6.concat()数组父本，连接
+7.slice()分割数组，不影响原数组，如果有负数，用数组长度加上这个数，然后结束位置小于起始位置，则返回空数组
+8.splice影响原数组，起始位置＋删除项数＋插入的项（完成删除，插入，替换）
+9.indexOf,lastIndexOf,要查找的项＋查找起点的索引
+10.迭代：
+  every,forEach,filter,map,some
+11.归并：
+  reduce,reduceRight()
+12.Date类型， UTC国际协调时间（1970，1，1零时）
+  Date.parse() 参数：日期
+  Date.UTC() 参数：毫秒数
+  new Date()传入正确格式，会h 
