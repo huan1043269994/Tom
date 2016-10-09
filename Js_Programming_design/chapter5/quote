@@ -22,5 +22,49 @@
   reduce,reduceRight()
 12.Date类型， UTC国际协调时间（1970，1，1零时）
   Date.parse() 参数：日期
-  Date.UTC() 参数：毫秒数
-  new Date()传入正确格式，会h 
+  Date.UTC() 参数：日期（GMT格式创建的日期和时间）
+  new Date()传入正确格式，会后台调用parse，基于本地时区创建的日期和时间。
+  Date.now()方法，返回表示当前日期的毫秒数。
+13. 继承的方法。
+  toLocaleString()按照本地时区设置响应的格式
+  toString()一般带有时区信息
+  valueOf() 会返回日期的毫秒数
+  还有一些方法能够日期格式化
+  utc指的是在没有时区偏差的情况下将日期转换为gmt时间的日期。
+  还有一些方法能够日期格式化
+14. regexp
+  g:全局模式
+  i：不区分大小写
+  m：表示多行
+  所有元字符都都必须转义
+  格式：
+    / pattern / flags   /*使用正则字面量形式必须会创建RegExp实例。*/ source属性保存的是规范形式的字符串，即字面量形式所用的字符串
+    new RegExp(pattern, flags);
+    RegExp() 方法
+      14.1 exec 专为捕获组设计
+      text = mom and dad and baby
+        pattern = /mom ( and dad( and baby)?)?/gi
+        pattern.exec(text);   
+          1.括号是捕获组
+          2.返回index和input，input 就是字符串本身
+          3.返回一个Array的实例，第一项是最外层匹配，然后每个匹配组
+          4.在其上设置了g标识，每次匹配只是匹配第一项，但是持续匹配可以往下，不设置始终都是第一项
+      14.2 test只返回是否匹配成功
+      14.3 toLocaleString(), toString()都会返回正则表达式的字面量，valueOf返回正则表达式本身。
+      14.4 正则表达式构造函数包含一些属性，对最近的一次正则表达式操作而变化
+       14.4.1 input,lastMatch,lastParen,leftContext,multiline,rightContext,还有九个用户存储捕获组的 RegExp.$1(自动填充)
+15. function 函数即是对象也是指针
+  15.1 函数声明和函数表达式
+    解析器有一个申明提前的过程
+    两重需求可以用返回函数的方式实现
+  15.2 函数内部属性： arguments, this, callee
+    15.2.1 callee 消除紧密耦合的现象。
+      function factorial(num) {
+        if (num <= 1) {
+           return 1;
+        } else {
+           reutnr num * arguments.callee(num - 1);
+         }
+     15.2.2 函数变量保存的是指针，所以无论作用域是怎么样的，都是指向同一个函数，只是this的作用域不同，所以执行的函数是不同的
+     15.2.3 arguments.caller 和 caller是为了区分吧caller弄错。 caller是调用当前函数的引用，如果是在全局作用域中调用这些函数，那么是null
+     15.2.4 apply(this,arguments)和call(this,a1,a2,a3),bind()关键在于能够扩展函数作用域。
