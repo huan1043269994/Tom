@@ -9,8 +9,8 @@
                         默认在home下创建一个和用户名一样的文件夹：useradd -g sexy sdf 
                         指定创建用户时的文件夹，没有指定用户组会创建一个和用户名相同的用户组
                                                                 ：useradd -d /home/xxx imooc
-                        使用useradd -g sexy sdf,删除用户组之前要删除用户
-                        使用useradd -d /home/xxx imooc,删除用户之后直接也删除了用户组 
+                        使用userdel -g sexy sdf,删除用户组之前要删除用户
+                        使用userdel -d /home/xxx imooc,删除用户之后直接也删除了用户组 
   添加注释：usermod -c dgdzmx sdf
   添加cls，使用sdf的用户:usermod -l cls sdf  修改所属文件夹： usermod -d /home/cls cls
   修改用户的用户组,把imooc切换到sexy： usermod -g sexy imooc
